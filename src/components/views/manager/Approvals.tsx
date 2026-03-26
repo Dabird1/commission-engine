@@ -154,9 +154,9 @@ export default function Approvals({ selectedBrand }: ApprovalsProps) {
   }
 
   return (
-    <div style={{ padding: '1.5rem', maxWidth: '1200px' }}>
+    <div style={{ padding: '0.75rem', maxWidth: '1200px' }} className="sm:p-6">
       {/* Header */}
-      <div style={{ marginBottom: '1.5rem' }}>
+      <div style={{ marginBottom: '0.75rem' }} className="sm:mb-6">
         <h1 style={{ fontSize: '1.875rem', fontWeight: 'bold', color: 'var(--text-primary)' }}>
           Approvals
         </h1>
@@ -168,7 +168,7 @@ export default function Approvals({ selectedBrand }: ApprovalsProps) {
       </div>
 
       {/* Items */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }} className="sm:gap-4">
         {items.length === 0 ? (
           <div
             style={{
@@ -234,15 +234,18 @@ export default function Approvals({ selectedBrand }: ApprovalsProps) {
                     )}
                   </div>
                 ) : (
-                  <div style={{ padding: '1.25rem' }}>
+                  <div style={{ padding: '0.75rem' }} className="sm:p-5">
                     {/* Top line: type · rep · amount */}
                     <div
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        marginBottom: '0.75rem',
+                        marginBottom: '0.5rem',
+                        flexDirection: 'column',
+                        gap: '0.5rem',
                       }}
+                      className="sm:flex-row sm:gap-0 sm:mb-3"
                     >
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <AlertTriangle style={{ width: '1rem', height: '1rem', color: typeColor.border }} />
@@ -276,7 +279,7 @@ export default function Approvals({ selectedBrand }: ApprovalsProps) {
 
                     {/* Deal name (if applicable) */}
                     {item.dealName && (
-                      <p style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                      <p style={{ fontSize: '0.875rem', fontWeight: '500', color: 'var(--text-primary)', marginBottom: '0.25rem' }} className="sm:mb-2">
                         {item.dealName} — {formatCurrency(item.dealAmount)}
                       </p>
                     )}
@@ -343,9 +346,11 @@ Final due: ${formatCurrency(item.commissionEarned)} - ${formatCurrency(item.depo
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'flex-end',
-                        gap: '1.5rem',
-                        marginTop: '1rem',
+                        gap: '0.75rem',
+                        marginTop: '0.75rem',
+                        flexDirection: 'column',
                       }}
+                      className="sm:flex-row sm:gap-6 sm:mt-4"
                     >
                       <div style={{ flex: 1 }}>
                         <p
@@ -364,7 +369,7 @@ Final due: ${formatCurrency(item.commissionEarned)} - ${formatCurrency(item.depo
                         </p>
                       </div>
 
-                      <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0 }}>
+                      <div style={{ display: 'flex', gap: '0.5rem', flexShrink: 0, width: '100%' }} className="sm:w-auto">
                         <button
                           onClick={() => handleAction(item.id, 'approved')}
                           style={{

@@ -136,8 +136,8 @@ export default function AuditLog() {
   const actions = Array.from(new Set(entries.map(e => e.action)));
 
   return (
-    <div className="p-8 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-[var(--text-primary)]">Audit Log</h1>
           <p className="text-sm text-[var(--text-secondary)] mt-1">{entries.length} events recorded</p>
@@ -152,12 +152,12 @@ export default function AuditLog() {
       </div>
 
       {/* Filter Bar */}
-      <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+      <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
         <div className="flex items-center gap-2 mb-4">
           <Filter size={16} style={{ color: 'var(--text-secondary)' }} />
           <h2 className="text-sm font-semibold text-[var(--text-primary)]">Filters</h2>
         </div>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-4">
           <div>
             <label className="block text-sm font-semibold text-[var(--text-secondary)] mb-2 uppercase">Brand</label>
             <select
@@ -239,10 +239,10 @@ export default function AuditLog() {
               {/* Header */}
               <div
                 onClick={() => toggleExpand(entry.id)}
-                className="p-4 cursor-pointer transition-colors hover:opacity-90"
+                className="p-3 sm:p-4 cursor-pointer transition-colors hover:opacity-90"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-4 flex-1">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
                     <div className="text-2xl mt-0.5 flex-shrink-0">
                       {entry.action === 'Plan Update' && '📋'}
                       {entry.action === 'Commission Recalculation' && '🧮'}
@@ -273,7 +273,7 @@ export default function AuditLog() {
 
               {/* Expanded Details */}
               {entry.expanded && (
-                <div className="border-t p-4 space-y-4" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-primary)' }}>
+                <div className="border-t p-3 sm:p-4 space-y-4" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-primary)' }}>
                   {/* Inputs */}
                   <div>
                     <h4 className="text-sm font-bold text-[var(--text-primary)] mb-2">Inputs</h4>
@@ -322,20 +322,20 @@ export default function AuditLog() {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-4 gap-4">
-        <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-semibold uppercase mb-2">Total Entries</div>
           <div className="text-2xl font-bold text-[var(--text-primary)]">{filteredEntries.length}</div>
         </div>
-        <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-semibold uppercase mb-2">Unique Users</div>
           <div className="text-2xl font-bold text-[var(--text-primary)]">{users.length}</div>
         </div>
-        <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-semibold uppercase mb-2">Action Types</div>
           <div className="text-2xl font-bold text-[var(--text-primary)]">{actions.length}</div>
         </div>
-        <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-semibold uppercase mb-2">Status</div>
           <div className="text-lg font-bold" style={{ color: 'var(--semantic-paid)' }}>PE-Compliant</div>
         </div>

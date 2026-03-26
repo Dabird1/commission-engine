@@ -435,9 +435,11 @@ export default function AICopilot({ activeView, currentRole }: AICopilotProps) {
         <div
           className="fixed z-[999] flex flex-col"
           style={{
-            left: '270px',
+            left: 'auto',
+            right: '12px',
             bottom: '16px',
-            width: '420px',
+            width: 'calc(100vw - 24px)',
+            maxWidth: '420px',
             height: '560px',
             borderRadius: '20px',
             background: 'var(--bg-card)',
@@ -448,7 +450,7 @@ export default function AICopilot({ activeView, currentRole }: AICopilotProps) {
         >
           {/* Header */}
           <div
-            className="flex-shrink-0 px-4 py-3 flex items-center justify-between"
+            className="flex-shrink-0 px-3 sm:px-4 py-3 flex items-center justify-between"
             style={{
               background: 'linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08))',
               borderBottom: '1px solid var(--border-subtle)',
@@ -480,7 +482,7 @@ export default function AICopilot({ activeView, currentRole }: AICopilotProps) {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: 'thin' }}>
+          <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-3 space-y-3" style={{ scrollbarWidth: 'thin' }}>
             {messages.length === 0 ? (
               // Welcome + Suggestions
               <div>
@@ -592,9 +594,9 @@ export default function AICopilot({ activeView, currentRole }: AICopilotProps) {
           </div>
 
           {/* Input */}
-          <div className="flex-shrink-0 px-3 py-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+          <div className="flex-shrink-0 px-2 sm:px-3 py-3" style={{ borderTop: '1px solid var(--border-subtle)' }}>
             <div
-              className="flex items-center gap-2 px-3.5 py-2.5 rounded-xl"
+              className="flex items-center gap-2 px-2.5 sm:px-3.5 py-2.5 rounded-xl"
               style={{
                 backgroundColor: 'var(--bg-secondary)',
                 border: '1px solid var(--border-primary)',
@@ -638,7 +640,7 @@ export default function AICopilot({ activeView, currentRole }: AICopilotProps) {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed z-[998] flex items-center gap-2.5 px-3 py-2 rounded-lg transition-all group"
+          className="hidden lg:flex fixed z-[998] items-center gap-2.5 px-3 py-2 rounded-lg transition-all group"
           style={{
             left: '12px',
             bottom: '196px',

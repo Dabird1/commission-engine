@@ -129,7 +129,7 @@ export default function HandbookEditor() {
         </div>
 
         {/* Stats Bar */}
-        <div className="grid grid-cols-4 gap-3 mb-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mb-3">
           {[
             { label: 'Sections', value: sections.length, icon: FileText, color: 'var(--accent-blue)' },
             { label: 'Signed (Current)', value: `${currentVersionSigned}/${acknowledgements.length}`, icon: CheckCircle, color: 'var(--accent-green)' },
@@ -334,22 +334,22 @@ export default function HandbookEditor() {
           <div className="h-full overflow-y-auto px-6 py-4" style={{ scrollbarWidth: 'thin' }}>
             <div className="max-w-4xl">
               {/* Sign rate overview */}
-              <div className="grid grid-cols-3 gap-4 mb-5">
-                <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-5">
+                <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="text-2xl font-bold" style={{ color: 'var(--accent-green)' }}>{signRate}%</div>
                   <div className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>Overall sign rate</div>
                   <div className="h-2 rounded-full mt-2" style={{ backgroundColor: 'var(--bg-secondary)' }}>
                     <div className="h-full rounded-full" style={{ width: `${signRate}%`, backgroundColor: 'var(--accent-green)' }} />
                   </div>
                 </div>
-                <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+                <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="text-2xl font-bold" style={{ color: 'var(--accent-blue)' }}>{currentVersionSigned}</div>
                   <div className="text-sm mt-1" style={{ color: 'var(--text-tertiary)' }}>Signed current version (v5)</div>
                   <div className="text-[14px] mt-1" style={{ color: 'var(--text-tertiary)' }}>
                     {signed.length - currentVersionSigned} signed older version
                   </div>
                 </div>
-                <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+                <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
                   <div className="flex items-center justify-between">
                     <div>
                       <div className="text-2xl font-bold" style={{ color: unsigned.length > 0 ? '#f59e0b' : 'var(--accent-green)' }}>
@@ -374,9 +374,9 @@ export default function HandbookEditor() {
                   <div className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: '#f59e0b' }}>
                     Pending ({unsigned.length})
                   </div>
-                  <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border-primary)' }}>
+                  <div className="rounded-xl border overflow-x-auto" style={{ borderColor: 'var(--border-primary)' }}>
                     {unsigned.map((person, i) => (
-                      <div key={i} className="flex items-center justify-between px-4 py-3 border-b last:border-b-0"
+                      <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-3 sm:px-4 py-3 border-b last:border-b-0"
                         style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
@@ -402,9 +402,9 @@ export default function HandbookEditor() {
                 <div className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--accent-green)' }}>
                   Signed ({signed.length})
                 </div>
-                <div className="rounded-xl border overflow-hidden" style={{ borderColor: 'var(--border-primary)' }}>
+                <div className="rounded-xl border overflow-x-auto" style={{ borderColor: 'var(--border-primary)' }}>
                   {signed.map((person, i) => (
-                    <div key={i} className="flex items-center justify-between px-4 py-3 border-b last:border-b-0"
+                    <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-3 sm:px-4 py-3 border-b last:border-b-0"
                       style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"

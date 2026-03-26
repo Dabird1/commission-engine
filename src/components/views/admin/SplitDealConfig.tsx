@@ -139,14 +139,14 @@ export default function SplitDealConfig() {
   };
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-3 sm:p-8 space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-[var(--text-primary)]">Split Deal Configuration</h1>
         <p className="text-sm text-[var(--text-secondary)] mt-1">Configure how commission is split between reps on multi-party deals</p>
       </div>
 
       {/* Brand Selector */}
-      <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
         <span className="text-sm font-semibold text-[var(--text-secondary)]">Brand:</span>
         <div className="flex gap-2">
           {brands.map(brand => (
@@ -166,8 +166,8 @@ export default function SplitDealConfig() {
       </div>
 
       {/* Configuration Table */}
-      <div className="rounded-lg border overflow-hidden" style={{ borderColor: 'var(--border-primary)' }}>
-        <table className="w-full">
+      <div className="rounded-lg border overflow-x-auto" style={{ borderColor: 'var(--border-primary)' }}>
+        <table className="w-full min-w-max">
           <thead className="border-b" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-primary)' }}>
             <tr>
               <th className="text-left py-3 px-4 text-sm font-semibold text-[var(--text-secondary)] w-16">On</th>
@@ -261,12 +261,12 @@ export default function SplitDealConfig() {
       </div>
 
       {/* Legend */}
-      <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-primary)' }}>
+      <div className="rounded-lg border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-primary)' }}>
         <div className="flex items-start gap-2 mb-3">
           <Info size={16} className="mt-0.5 flex-shrink-0" style={{ color: 'var(--accent-blue)' }} />
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Configuration Reference</h3>
         </div>
-        <div className="grid grid-cols-3 gap-6 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 text-sm">
           <div>
             <div className="font-semibold text-[var(--text-primary)] mb-2">Tier Impact</div>
             <ul className="space-y-1 text-[var(--text-secondary)] text-sm">
@@ -295,7 +295,7 @@ export default function SplitDealConfig() {
       </div>
 
       {/* Actions */}
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <button onClick={() => { setSaveStatus('saved'); setTimeout(() => setSaveStatus('idle'), 2000); }}
           className="flex-1 px-6 py-2.5 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
           style={{ backgroundColor: saveStatus === 'saved' ? 'var(--accent-green)' : 'var(--accent-blue)' }}>

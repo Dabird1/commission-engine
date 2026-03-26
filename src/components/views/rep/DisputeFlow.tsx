@@ -50,8 +50,8 @@ export default function DisputeFlow() {
   return (
     <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="flex-shrink-0 px-6 pt-4 pb-3">
-        <div className="flex items-center justify-between mb-2">
+      <div className="flex-shrink-0 px-3 sm:px-6 pt-4 pb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0 mb-2">
           <div>
             <h1 className="text-xl font-bold" style={{ color: 'var(--text-primary)' }}>My Disputes</h1>
             <p className="text-sm mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
@@ -69,14 +69,14 @@ export default function DisputeFlow() {
         </div>
 
         {showNewDisputeForm && (
-          <div className="mt-3 p-4 rounded-lg border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--accent-blue)' }}>
+          <div className="mt-3 p-3 sm:p-4 rounded-lg border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--accent-blue)' }}>
             <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Select a deal to dispute</p>
             <p className="text-sm mt-1" style={{ color: 'var(--text-secondary)' }}>Choose from your recent deals or search to file a new dispute.</p>
           </div>
         )}
 
         {/* Status pills + SLA note */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 flex-wrap">
           {Object.entries(statusConfig).map(([key, cfg]) => {
             const count = allDisputes.filter((d: any) => d.status === key).length;
             if (count === 0) return null;
@@ -96,7 +96,7 @@ export default function DisputeFlow() {
       </div>
 
       {/* Disputes List */}
-      <div className="flex-1 overflow-y-auto px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
         <div className="space-y-2">
           {allDisputes.map((dispute: any) => {
             const deal = sampleDeals.find((d: any) => d.id === dispute.dealId);
@@ -113,10 +113,10 @@ export default function DisputeFlow() {
                 }}>
                 {/* Header */}
                 <button onClick={() => setExpandedId(isExpanded ? null : dispute.id)}
-                  className="w-full text-left px-4 py-3 transition-colors"
+                  className="w-full text-left px-3 sm:px-4 py-3 transition-colors"
                   onMouseEnter={e => e.currentTarget.style.backgroundColor = 'var(--bg-hover)'}
                   onMouseLeave={e => e.currentTarget.style.backgroundColor = 'transparent'}>
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
                     <div style={{ color: 'var(--text-tertiary)' }}>
                       {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
                     </div>
@@ -161,8 +161,8 @@ export default function DisputeFlow() {
                   <div className="border-t" style={{ borderColor: 'var(--border-primary)' }}>
                     {/* Deal Info */}
                     {deal && (
-                      <div className="px-4 py-3 border-b" style={{ borderColor: 'var(--border-primary)', backgroundColor: 'var(--bg-secondary)' }}>
-                        <div className="grid grid-cols-4 gap-3">
+                      <div className="px-3 sm:px-4 py-3 border-b overflow-x-auto" style={{ borderColor: 'var(--border-primary)', backgroundColor: 'var(--bg-secondary)' }}>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 min-w-min sm:min-w-0">
                           {[
                             { label: 'Customer', value: deal.customerName },
                             { label: 'Type', value: deal.projectType },
@@ -179,8 +179,8 @@ export default function DisputeFlow() {
                     )}
 
                     {/* Status Timeline */}
-                    <div className="px-4 py-3 border-b" style={{ borderColor: 'var(--border-primary)' }}>
-                      <div className="flex items-center gap-4">
+                    <div className="px-3 sm:px-4 py-3 border-b overflow-x-auto" style={{ borderColor: 'var(--border-primary)' }}>
+                      <div className="flex items-center gap-2 sm:gap-4 min-w-min sm:min-w-0">
                         {[
                           { label: 'Opened', done: true },
                           { label: 'Under Review', done: dispute.status !== 'open' },
@@ -205,7 +205,7 @@ export default function DisputeFlow() {
 
                     {/* Messages */}
                     <div className="flex flex-col" style={{ maxHeight: 280 }}>
-                      <div className="flex-1 overflow-y-auto p-4 space-y-2" style={{ scrollbarWidth: 'thin' }}>
+                      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-2" style={{ scrollbarWidth: 'thin' }}>
                         {(dispute.messages || []).map((msg: any) => {
                           const isMe = msg.authorRole === 'rep';
                           return (
@@ -226,7 +226,7 @@ export default function DisputeFlow() {
                       </div>
 
                       {/* Input */}
-                      <div className="flex-shrink-0 px-4 py-2 border-t flex gap-2" style={{ borderColor: 'var(--border-primary)' }}>
+                      <div className="flex-shrink-0 px-3 sm:px-4 py-2 border-t flex flex-col sm:flex-row gap-1 sm:gap-2" style={{ borderColor: 'var(--border-primary)' }}>
                         <input type="text" placeholder="Add a message..."
                           value={newMessage[dispute.id] || ''}
                           onChange={e => setNewMessage(prev => ({ ...prev, [dispute.id]: e.target.value }))}

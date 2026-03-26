@@ -68,15 +68,15 @@ export default function TeamOverview() {
   )
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-4 p-3 sm:space-y-8 sm:p-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-[var(--text-primary)]">Team Overview</h1>
-        <p className="mt-2 text-[var(--text-secondary)]">March 2026 Performance Summary</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">Team Overview</h1>
+        <p className="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">March 2026 Performance Summary</p>
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard
           label="Team Total Earned"
           value={formatCurrency(teamEarnings)}
@@ -104,9 +104,9 @@ export default function TeamOverview() {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2">
         {/* Team Earnings Bar Chart */}
-        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">Team Earnings by Rep</h2>
           <div className="mt-6 h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -137,7 +137,7 @@ export default function TeamOverview() {
         </div>
 
         {/* Commission Cost Trend */}
-        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">12-Month Commission Trend</h2>
           <div className="mt-6 h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -180,8 +180,8 @@ export default function TeamOverview() {
       </div>
 
       {/* Top Performer Card */}
-      <div className="rounded-lg border-l-4 border-l-amber-500 border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-lg border-l-4 border-l-amber-500 border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-start justify-between gap-4 sm:gap-0">
           <div>
             <h3 className="text-sm font-medium text-[var(--text-secondary)]">Top Performer</h3>
             <p className="mt-2 text-xl font-bold text-[var(--text-primary)]">

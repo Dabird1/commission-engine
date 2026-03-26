@@ -70,7 +70,7 @@ export default function ScenarioModeling() {
   };
 
   return (
-    <div className="p-8 w-full space-y-5" style={{ maxWidth: '1400px' }}>
+    <div className="p-3 sm:p-8 w-full space-y-5" style={{ maxWidth: '1400px' }}>
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>
@@ -82,10 +82,10 @@ export default function ScenarioModeling() {
       </div>
 
       {/* Scenarios Grid — Side by side, no vertical scrolling */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-6">
         {/* Scenario 1: Add Reps — Calculator-style layout */}
         <div
-          className="rounded-lg border p-6"
+          className="rounded-lg border p-3 sm:p-6"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -200,7 +200,7 @@ export default function ScenarioModeling() {
 
         {/* Scenario 2: Change Plan Model — Calculator-style layout */}
         <div
-          className="rounded-lg border p-6"
+          className="rounded-lg border p-3 sm:p-6"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -312,7 +312,7 @@ export default function ScenarioModeling() {
 
       {/* Disclaimer — Clear and prominent */}
       <div
-        className="rounded-lg border p-5"
+        className="rounded-lg border p-3 sm:p-5"
         style={{
           borderColor: 'var(--accent-blue)',
           backgroundColor: 'rgba(59, 130, 246, 0.05)',

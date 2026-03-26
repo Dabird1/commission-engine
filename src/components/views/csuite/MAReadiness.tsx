@@ -74,10 +74,10 @@ export default function MAReadiness() {
       </div>
 
       {/* Input Section + KPIs */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-8">
         {/* Left: Input Form */}
         <div
-          className="rounded-lg border p-8 lg:col-span-1"
+          className="rounded-lg border p-3 sm:p-8 lg:col-span-1"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -178,10 +178,10 @@ export default function MAReadiness() {
         </div>
 
         {/* Right: Big KPI Cards */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-3 sm:space-y-4">
           {/* Projected Monthly Cost */}
           <div
-            className="rounded-lg border p-8"
+            className="rounded-lg border p-3 sm:p-8"
             style={{
               backgroundColor: 'var(--bg-card)',
               borderColor: 'var(--border-primary)',
@@ -204,7 +204,7 @@ export default function MAReadiness() {
 
           {/* Projected Annual Cost */}
           <div
-            className="rounded-lg border p-8"
+            className="rounded-lg border p-3 sm:p-8"
             style={{
               backgroundColor: 'var(--bg-card)',
               borderColor: 'var(--border-primary)',
@@ -227,7 +227,7 @@ export default function MAReadiness() {
 
           {/* Integration Timeline */}
           <div
-            className="rounded-lg border p-8"
+            className="rounded-lg border p-3 sm:p-8"
             style={{
               backgroundColor: 'var(--bg-card)',
               borderColor: 'var(--border-primary)',
@@ -250,7 +250,7 @@ export default function MAReadiness() {
 
           {/* Cost Efficiency vs Portfolio */}
           <div
-            className="rounded-lg border p-8"
+            className="rounded-lg border p-3 sm:p-8"
             style={{
               backgroundColor: efficiency > 0 ? 'rgba(34, 197, 94, 0.05)' : 'rgba(245, 158, 11, 0.05)',
               borderColor: efficiency > 0 ? '#22c55e' : '#f59e0b',
@@ -272,7 +272,7 @@ export default function MAReadiness() {
 
       {/* Comparison Chart */}
       <div
-        className="rounded-lg border p-8"
+        className="rounded-lg border p-3 sm:p-8"
         style={{
           backgroundColor: 'var(--bg-card)',
           borderColor: 'var(--border-primary)',
@@ -303,7 +303,7 @@ export default function MAReadiness() {
 
       {/* Portfolio Context */}
       <div
-        className="rounded-lg border p-8"
+        className="rounded-lg border p-3 sm:p-8"
         style={{
           backgroundColor: 'var(--bg-card)',
           borderColor: 'var(--border-primary)',
@@ -313,7 +313,7 @@ export default function MAReadiness() {
         <h2 className="text-2xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
           Current Portfolio Context
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-8">
           <div>
             <div className="text-sm font-semibold mb-2" style={{ color: 'var(--text-tertiary)' }}>
               Total Reps
@@ -352,7 +352,7 @@ export default function MAReadiness() {
 
       {/* Executive Summary */}
       <div
-        className="rounded-lg border p-8"
+        className="rounded-lg border p-3 sm:p-8"
         style={{
           backgroundColor: 'rgba(59, 130, 246, 0.05)',
           borderColor: 'var(--accent-blue)',

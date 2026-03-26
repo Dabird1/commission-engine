@@ -209,9 +209,9 @@ export default function AuditTrail() {
   };
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-3 sm:p-8 space-y-6">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
         <div>
           <h1 className="text-[28px] font-bold text-[var(--text-primary)] mb-1">Audit Trail</h1>
           <p className="text-[16px] text-[var(--text-secondary)]">
@@ -227,7 +227,7 @@ export default function AuditTrail() {
       </div>
 
       {/* PE-Grade Compliance Badge */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-5 flex items-start gap-4">
+      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 sm:p-5 flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
         <div className="mt-0.5">
           <Shield className="w-6 h-6 text-blue-700" />
         </div>
@@ -240,9 +240,9 @@ export default function AuditTrail() {
       </div>
 
       {/* Filters */}
-      <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-6">
+      <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-6">
         <h2 className="text-[20px] font-semibold text-[var(--text-primary)] mb-5">Filters</h2>
-        <div className="grid grid-cols-4 gap-4 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
           <div>
             <label className="block text-[14px] font-medium text-[var(--text-secondary)] mb-2 uppercase">
               From Date
@@ -337,7 +337,7 @@ export default function AuditTrail() {
               >
                 <button
                   onClick={() => toggleExpand(entry.id)}
-                  className="w-full text-left p-5 hover:bg-[var(--bg-secondary)] transition flex items-start justify-between group"
+                  className="w-full text-left p-3 sm:p-5 hover:bg-[var(--bg-secondary)] transition flex items-start justify-between group"
                 >
                   <div className="flex-1">
                     <div className="flex items-start gap-4 mb-3">
@@ -368,8 +368,8 @@ export default function AuditTrail() {
                 </button>
 
                 {expandedId === entry.id && entry.details && (
-                  <div className="border-t border-[var(--border-primary)] bg-[var(--bg-secondary)] p-6">
-                    <div className="grid grid-cols-3 gap-6">
+                  <div className="border-t border-[var(--border-primary)] bg-[var(--bg-secondary)] p-3 sm:p-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                       {/* Inputs */}
                       <div>
                         <p className="text-[14px] font-semibold text-[var(--text-secondary)] uppercase mb-3">
@@ -405,7 +405,7 @@ export default function AuditTrail() {
                         <p className="text-[14px] font-semibold text-[var(--text-secondary)] uppercase mb-3">
                           Calculated Output
                         </p>
-                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 font-mono text-[14px] text-[var(--text-primary)] leading-relaxed">
+                        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-2 sm:p-3 font-mono text-[14px] text-[var(--text-primary)] leading-relaxed">
                           {entry.details.output}
                         </div>
                       </div>

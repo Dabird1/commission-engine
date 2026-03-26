@@ -42,7 +42,7 @@ function TheIHSWay() {
       </div>
 
       {/* Vision + Mission Cards */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div className="rounded-xl border p-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
           <div className="flex items-center gap-2 mb-2">
             <Eye size={14} style={{ color: 'var(--accent-blue)' }} />
@@ -70,7 +70,7 @@ function TheIHSWay() {
       </div>
 
       {/* Core Values — How they connect to your pay */}
-      <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+      <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>
           Core Values → How They Show Up In Your Pay
         </div>
@@ -107,11 +107,11 @@ function TheIHSWay() {
       </div>
 
       {/* Non-Negotiables */}
-      <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+      <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--text-tertiary)' }}>
           Non-Negotiables — These Apply Everywhere
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {['Safety First', 'Show Respect', 'Team Unity', 'Provide Ethical Solutions', 'Be Accountable'].map(item => (
             <span key={item} className="flex items-center gap-1 text-[14px] font-semibold px-2.5 py-1.5 rounded-lg"
               style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)', border: '1px solid var(--border-primary)' }}>
@@ -138,7 +138,7 @@ function HowYourPlanWorks() {
   return (
     <div className="space-y-4">
       {/* Key Concept */}
-      <div className="rounded-xl p-4" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
+      <div className="rounded-xl p-3 sm:p-4" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--accent-blue)' }}>The Big Idea</div>
         <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
           Higher gross profit % on the deal = higher commission rate for you.
@@ -149,9 +149,9 @@ function HowYourPlanWorks() {
       </div>
 
       {/* The Formula */}
-      <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+      <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>The Formula</div>
-        <div className="flex items-center justify-center gap-3 py-3">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 py-3">
           <div className="text-center">
             <div className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Deal Value</div>
             <div className="text-[9px]" style={{ color: 'var(--text-tertiary)' }}>Full contract price</div>
@@ -196,14 +196,14 @@ function HowYourPlanWorks() {
       {/* 50/50 Split Visual */}
       <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>How It's Split</div>
-        <div className="flex gap-3">
-          <div className="flex-1 rounded-lg p-3 text-center" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
+        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+          <div className="flex-1 rounded-lg p-2 sm:p-3 text-center" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
             <Banknote size={20} className="mx-auto mb-1" style={{ color: '#3b82f6' }} />
             <div className="text-lg font-bold" style={{ color: '#3b82f6' }}>50%</div>
             <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Front-End</div>
             <div className="text-[14px] mt-1" style={{ color: 'var(--text-tertiary)' }}>Paid when customer signs</div>
           </div>
-          <div className="flex-1 rounded-lg p-3 text-center" style={{ backgroundColor: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)' }}>
+          <div className="flex-1 rounded-lg p-2 sm:p-3 text-center" style={{ backgroundColor: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)' }}>
             <CheckCircle size={20} className="mx-auto mb-1" style={{ color: '#10b981' }} />
             <div className="text-lg font-bold" style={{ color: '#10b981' }}>50%</div>
             <div className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Back-End</div>
@@ -219,7 +219,7 @@ function WhenYouGetPaid() {
   return (
     <div className="space-y-4">
       {/* Timeline */}
-      <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+      <div className="rounded-xl border p-3 sm:p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-4" style={{ color: 'var(--text-tertiary)' }}>Payment Timeline</div>
         <div className="relative">
           {/* Connecting line */}
@@ -229,7 +229,7 @@ function WhenYouGetPaid() {
             { icon: Timer, color: '#f59e0b', label: 'Job Installed & Inspected', time: 'Varies', desc: '50% back-end commission earned at completion', detail: 'Paid within 5 business days of final payment' },
             { icon: Banknote, color: '#10b981', label: 'Direct Deposit', time: '1st & 15th', desc: 'All commissions deposited via Paycor', detail: 'Detailed statement included with every deposit' },
           ].map((step, i) => (
-            <div key={i} className="flex items-start gap-4 mb-5 last:mb-0 relative">
+            <div key={i} className="flex flex-col sm:flex-row items-start gap-2 sm:gap-4 mb-5 last:mb-0 relative">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 z-10"
                 style={{ backgroundColor: `${step.color}12`, border: `2px solid ${step.color}30` }}>
                 <step.icon size={20} style={{ color: step.color }} />
@@ -252,7 +252,7 @@ function WhenYouGetPaid() {
       {/* What's on your statement */}
       <div className="rounded-xl border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>Your Statement Includes</div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {[
             { icon: FileText, label: 'Each deal listed' },
             { icon: Target, label: 'GP% per deal' },
@@ -261,7 +261,7 @@ function WhenYouGetPaid() {
             { icon: AlertTriangle, label: 'Exceptions flagged' },
             { icon: Clock, label: 'Adjustment notices within 24hrs' },
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-2 p-2 rounded-lg" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+            <div key={i} className="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-2 p-2 rounded-lg" style={{ backgroundColor: 'var(--bg-secondary)' }}>
               <item.icon size={12} style={{ color: 'var(--accent-blue)' }} />
               <span className="text-[14px] font-medium" style={{ color: 'var(--text-secondary)' }}>{item.label}</span>
             </div>
@@ -318,13 +318,13 @@ function ClawbackSection() {
           <Shield size={14} style={{ color: '#10b981' }} />
           <span className="text-sm font-bold" style={{ color: '#10b981' }}>Your Protections</span>
         </div>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
           {[
             { label: 'Notification', value: 'Within 48 hours' },
             { label: 'Right to Dispute', value: 'Always guaranteed' },
             { label: 'Resolution Time', value: '10 business days' },
           ].map((p, i) => (
-            <div key={i} className="text-center p-2 rounded-lg" style={{ backgroundColor: 'var(--bg-card)' }}>
+            <div key={i} className="text-center p-1 sm:p-2 rounded-lg" style={{ backgroundColor: 'var(--bg-card)' }}>
               <div className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{p.value}</div>
               <div className="text-[9px]" style={{ color: 'var(--text-tertiary)' }}>{p.label}</div>
             </div>
@@ -350,7 +350,7 @@ function HowSplitsWork() {
       </div>
 
       {/* Split Types */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {[
           {
             type: 'Canvasser / Closer',
@@ -377,7 +377,7 @@ function HowSplitsWork() {
             tag: 'Occasional',
           },
         ].map((s, i) => (
-          <div key={i} className="rounded-xl border p-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+          <div key={i} className="rounded-xl border p-2 sm:p-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
             <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-2" style={{ backgroundColor: `${s.color}12` }}>
               <s.icon size={16} style={{ color: s.color }} />
             </div>
@@ -399,7 +399,7 @@ function HowSplitsWork() {
             'Splits are clearly documented on your payment statement',
             'Disputed splits go through the formal dispute process',
           ].map((rule, i) => (
-            <div key={i} className="flex items-start gap-2 text-[14px]" style={{ color: 'var(--text-secondary)' }}>
+            <div key={i} className="flex flex-col sm:flex-row items-start gap-1 sm:gap-2 text-[14px]" style={{ color: 'var(--text-secondary)' }}>
               <CheckCircle size={12} className="flex-shrink-0 mt-0.5" style={{ color: 'var(--accent-green)' }} />
               <span>{rule}</span>
             </div>
@@ -416,7 +416,7 @@ function HowDisputesWork() {
       {/* What can you dispute */}
       <div className="rounded-xl p-4" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.15)' }}>
         <div className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--accent-blue)' }}>What You Can Dispute</div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {['Split allocations', 'Payment amounts', 'Deal status', 'GP% calculations', 'Clawback decisions'].map(item => (
             <span key={item} className="text-[14px] font-medium px-2.5 py-1.5 rounded-lg" style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-secondary)', border: '1px solid var(--border-primary)' }}>
               {item}
@@ -436,7 +436,7 @@ function HowDisputesWork() {
             { step: 4, label: 'Escalate if Needed', desc: 'Disagree? Finance Director does a second review.', time: '+5-10 days', color: '#ef4444' },
             { step: 5, label: 'Resolution Applied', desc: 'Decision implemented immediately. Adjustments on next payment.', time: 'Same day', color: '#10b981' },
           ].map((s, i) => (
-            <div key={i} className="flex items-start gap-3 pb-4 last:pb-0 relative">
+            <div key={i} className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 pb-4 last:pb-0 relative">
               {i < 4 && <div className="absolute left-[17px] top-9 bottom-0 w-0.5" style={{ backgroundColor: 'var(--border-primary)' }} />}
               <div className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold z-10"
                 style={{ backgroundColor: `${s.color}12`, color: s.color, border: `2px solid ${s.color}30` }}>
@@ -473,7 +473,7 @@ function GlossarySection() {
   return (
     <div className="space-y-2">
       {terms.map((t, i) => (
-        <div key={i} className="flex items-start gap-3 p-3 rounded-xl border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
+        <div key={i} className="flex flex-col sm:flex-row items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)' }}>
           <div className="flex-shrink-0">
             <span className="text-sm font-bold px-2 py-1 rounded-lg" style={{ backgroundColor: 'var(--accent-blue-light)', color: 'var(--accent-blue)' }}>
               {t.term}
@@ -536,13 +536,13 @@ export default function HandbookPage() {
   const allViewed = sections.every((s: any) => viewedSections.has(s.id));
 
   return (
-    <div className="h-[calc(100vh-3.5rem)] flex overflow-hidden">
+    <div className="h-[calc(100vh-3.5rem)] flex flex-col sm:flex-row overflow-hidden">
       {/* Sidebar Navigation */}
-      <div className="w-56 flex-shrink-0 border-r flex flex-col"
+      <div className="w-full sm:w-56 flex-shrink-0 border-b sm:border-b-0 sm:border-r flex flex-col"
         style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
         {/* Search */}
-        <div className="p-3 border-b" style={{ borderColor: 'var(--border-primary)' }}>
-          <div className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="p-2 sm:p-3 border-b" style={{ borderColor: 'var(--border-primary)' }}>
+          <div className="flex items-center gap-2 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-lg" style={{ backgroundColor: 'var(--bg-secondary)' }}>
             <Search size={12} style={{ color: 'var(--text-tertiary)' }} />
             <input type="text" placeholder="Search..." value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
@@ -556,7 +556,7 @@ export default function HandbookPage() {
           {filteredSections.map((section: any) => (
             <button key={section.id}
               onClick={() => { setSelectedSectionId(section.id); markViewed(section.id); }}
-              className="w-full text-left px-3 py-2 text-sm transition-colors flex items-center gap-2"
+              className="w-full text-left px-2 sm:px-3 py-1.5 sm:py-2 text-sm transition-colors flex items-center gap-2"
               style={{
                 color: selectedSectionId === section.id ? 'var(--accent-blue)' : 'var(--text-secondary)',
                 backgroundColor: selectedSectionId === section.id ? 'var(--accent-blue-light)' : 'transparent',
@@ -574,7 +574,7 @@ export default function HandbookPage() {
         </div>
 
         {/* Progress + Acknowledge */}
-        <div className="p-3 border-t" style={{ borderColor: 'var(--border-primary)' }}>
+        <div className="p-2 sm:p-3 border-t" style={{ borderColor: 'var(--border-primary)' }}>
           <div className="flex items-center justify-between mb-1.5">
             <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Progress</span>
             <span className="text-[14px] font-bold" style={{ color: allViewed ? 'var(--accent-green)' : 'var(--text-tertiary)' }}>
@@ -682,7 +682,7 @@ export default function HandbookPage() {
             </div>
 
             {/* Content — visual or fallback */}
-            <div className="flex-1 overflow-y-auto px-6 py-4" style={{ scrollbarWidth: 'thin' }}>
+            <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-3 sm:py-4" style={{ scrollbarWidth: 'thin' }}>
               <div className="max-w-3xl">
                 {VisualRenderer ? (
                   <>

@@ -158,7 +158,7 @@ export default function Reconciliation() {
     discrepancyDetails.find((d) => d.period === period);
 
   return (
-    <div className="h-[calc(100vh-3.5rem)] overflow-hidden flex flex-col bg-[var(--bg-primary)] p-8">
+    <div className="h-[calc(100vh-3.5rem)] overflow-hidden flex flex-col bg-[var(--bg-primary)] p-3 sm:p-8">
       {/* Header */}
       <div className="mb-6 flex-shrink-0">
         <h1 className="text-[28px] font-bold text-[var(--text-primary)] mb-2">Reconciliation</h1>
@@ -187,8 +187,8 @@ export default function Reconciliation() {
       )}
 
       {/* KPI Summary Strip */}
-      <div className="grid grid-cols-4 gap-4 mb-6 flex-shrink-0">
-        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 flex-shrink-0">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-4">
           <p className="text-[14px] text-[var(--text-secondary)] font-semibold uppercase mb-2">
             Total Matched
           </p>
@@ -238,7 +238,7 @@ export default function Reconciliation() {
       </div>
 
       {/* Split Panel: Left (Needs Attention) + Right (Detail) */}
-      <div className="flex gap-6 flex-1 min-h-0">
+      <div className="flex flex-col lg:flex-row gap-3 sm:gap-6 flex-1 min-h-0">
         {/* Left: Periods needing attention */}
         <div className="flex-1 flex flex-col min-w-0">
           <h2 className="text-[14px] font-semibold text-[var(--text-primary)] mb-3 flex-shrink-0">
@@ -289,13 +289,13 @@ export default function Reconciliation() {
         </div>
 
         {/* Right: Detail panel */}
-        <div className="w-96 flex flex-col flex-shrink-0 min-w-0">
+        <div className="w-full lg:w-96 flex flex-col flex-shrink-0 min-w-0">
           {selectedPeriod ? (
             <>
               <h2 className="text-[14px] font-semibold text-[var(--text-primary)] mb-3 flex-shrink-0">
                 Details
               </h2>
-              <div className="flex-1 overflow-y-auto bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-5 space-y-5">
+              <div className="flex-1 overflow-y-auto bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-5 space-y-5">
                 {(() => {
                   const row = reconciliationData.find((r) => r.period === selectedPeriod);
                   const detail = getDetailForPeriod(selectedPeriod);
@@ -399,11 +399,11 @@ export default function Reconciliation() {
             View {matchedCount} matched {matchedCount === 1 ? 'period' : 'periods'}
           </button>
           {showMatched && (
-            <div className="mt-3 grid grid-cols-3 gap-3">
+            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
               {reconciliationData
                 .filter((r) => r.status === 'matched')
                 .map((row) => (
-                  <div key={row.period} className="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-3">
+                  <div key={row.period} className="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-lg p-2 sm:p-3">
                     <div className="flex items-center gap-1 mb-2">
                       <Check className="w-4 h-4 text-[var(--accent-green)]" />
                       <p className="text-[14px] font-semibold text-[var(--text-primary)]">

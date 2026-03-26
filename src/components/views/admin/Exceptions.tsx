@@ -171,14 +171,14 @@ export default function Exceptions() {
   const approvedCount = exceptions.filter(e => e.status === 'approved').length;
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-3 sm:p-8 space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-[var(--text-primary)]">Commission Exceptions</h1>
         <p className="text-sm text-[var(--text-secondary)] mt-1">Review & approve {exceptions.length} exceptions</p>
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
         <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-medium uppercase">Total</div>
           <div className="text-2xl font-bold text-[var(--text-primary)] mt-2">{exceptions.length}</div>
@@ -253,7 +253,7 @@ export default function Exceptions() {
                   </div>
 
                   {isPending && (
-                    <div className="flex gap-2 pt-2">
+                    <div className="flex flex-col sm:flex-row gap-2 pt-2">
                       <button
                         onClick={() => handleApprove(exception.id)}
                         className="flex-1 px-4 py-2 text-sm bg-[var(--semantic-paid)] text-white rounded-lg hover:opacity-90 transition-opacity font-semibold flex items-center justify-center gap-1.5"

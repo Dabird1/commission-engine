@@ -139,7 +139,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
   const singleBrand = selectedBrand !== 'all' ? brands.find((b: any) => b.id === selectedBrand) : null;
 
   return (
-    <div className="p-8 w-full space-y-4" style={{ maxWidth: '1400px' }}>
+    <div className="p-3 sm:p-8 w-full space-y-4" style={{ maxWidth: '1400px' }}>
       {/* Header — Large and clear */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
@@ -181,7 +181,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
 
       {/* KPI Summary — PROMINENT, above the fold */}
       <div
-        className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-xl overflow-hidden"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px rounded-xl overflow-hidden"
         style={{ backgroundColor: 'var(--border-primary)' }}
       >
         {[
@@ -190,7 +190,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
           { label: 'Avg Cost/Rep', value: formatCurrency(portfolioStats.avgCPR), sub: portfolioStats.avgCPR >= CPR_HIGH ? 'ABOVE TARGET' : portfolioStats.avgCPR <= CPR_MID ? 'UNDER TARGET' : 'ON TARGET', status: portfolioStats.avgCPR >= CPR_HIGH ? 'warning' : portfolioStats.avgCPR <= CPR_MID ? 'healthy' : 'neutral' },
           { label: 'Avg GP%', value: formatPercent(portfolioStats.avgGP), sub: portfolioStats.avgGP >= GP_STRONG ? 'STRONG' : portfolioStats.avgGP >= GP_WATCH ? 'ON TARGET' : 'AT RISK', status: portfolioStats.avgGP >= GP_STRONG ? 'healthy' : portfolioStats.avgGP >= GP_WATCH ? 'neutral' : 'warning' },
         ].map((kpi, i) => (
-          <div key={i} className="px-6 py-5" style={{ backgroundColor: 'var(--bg-card)' }}>
+          <div key={i} className="px-3 sm:px-6 py-3 sm:py-5" style={{ backgroundColor: 'var(--bg-card)' }}>
             <p className="text-12 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
               {kpi.label}
             </p>
@@ -258,6 +258,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
 
       {/* Grid or Table View */}
       {viewMode === 'grid' ? (
+        // Mobile-responsive grid view
         sortBy === 'region' && selectedBrand === 'all' ? (
           <div className="space-y-6">
             {['Midwest', 'Northeast', 'Mid-Atlantic', 'Pacific NW', 'Southeast & Canada']
@@ -276,7 +277,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
                         {regionBrands.length} brands · {regionReps} reps · {formatCurrency(regionEarned)}
                       </span>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
                       {regionBrands.map((brand) => renderBrandCard(brand))}
                     </div>
                   </div>
@@ -284,26 +285,26 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
               })}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
             {filteredAndSorted.map((brand) => renderBrandCard(brand))}
           </div>
         )
       ) : (
         /* Table View — Compact but readable */
         <div className="rounded-lg overflow-hidden" style={{ backgroundColor: 'var(--bg-card)', boxShadow: 'var(--shadow-sm)' }}>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto" style={{ overflowX: 'auto' }}>
             <table className="w-full">
               <thead>
                 <tr style={{ backgroundColor: 'var(--bg-secondary)' }}>
-                  <th className="px-5 py-3 text-left text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Brand</th>
-                  <th className="px-5 py-3 text-left text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Region</th>
-                  <th className="px-5 py-3 text-center text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Status</th>
-                  <th className="px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'totalEarned' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('totalEarned')}>Earned</th>
-                  <th className="px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'repCount' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('repCount')}>Reps</th>
-                  <th className="px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'costPerRep' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('costPerRep')}>Cost/Rep</th>
-                  <th className="px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'avgGP' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('avgGP')}>GP%</th>
-                  <th className="px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'avgRate' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('avgRate')}>Rate</th>
-                  <th className="px-5 py-3 text-center text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Trend</th>
+                  <th className="px-3 sm:px-5 py-3 text-left text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Brand</th>
+                  <th className="px-3 sm:px-5 py-3 text-left text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Region</th>
+                  <th className="px-3 sm:px-5 py-3 text-center text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Status</th>
+                  <th className="px-3 sm:px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'totalEarned' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('totalEarned')}>Earned</th>
+                  <th className="px-3 sm:px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'repCount' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('repCount')}>Reps</th>
+                  <th className="px-3 sm:px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'costPerRep' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('costPerRep')}>Cost/Rep</th>
+                  <th className="px-3 sm:px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'avgGP' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('avgGP')}>GP%</th>
+                  <th className="px-3 sm:px-5 py-3 text-right text-13 font-semibold uppercase tracking-wider cursor-pointer" style={{ color: sortBy === 'avgRate' ? 'var(--accent-blue)' : 'var(--text-tertiary)' }} onClick={() => toggleSort('avgRate')}>Rate</th>
+                  <th className="px-3 sm:px-5 py-3 text-center text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Trend</th>
                 </tr>
               </thead>
               <tbody>
@@ -322,16 +323,16 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
                       onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--bg-secondary)')}
                       onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
                     >
-                      <td className="px-5 py-4">
+                      <td className="px-3 sm:px-5 py-4">
                         <p className="text-14 font-semibold" style={{ color: 'var(--text-primary)' }}>{brand.brandName}</p>
                         <p className="text-12" style={{ color: 'var(--text-tertiary)' }}>{brand.brandInfo?.location}</p>
                       </td>
-                      <td className="px-5 py-4">
+                      <td className="px-3 sm:px-5 py-4">
                         <span className="text-13 font-medium px-2 py-1 rounded-full" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-secondary)' }}>
                           {brand.brandInfo?.region}
                         </span>
                       </td>
-                      <td className="px-5 py-4 text-center">
+                      <td className="px-3 sm:px-5 py-4 text-center">
                         <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-12 font-bold" style={{ backgroundColor: health.bgColor, color: health.color }}>
                           {health.icon === 'check' && <CheckCircle size={12} />}
                           {health.icon === 'alert' && <AlertCircle size={12} />}
@@ -339,26 +340,26 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
                           {health.label}
                         </span>
                       </td>
-                      <td className="px-5 py-4 text-right">
+                      <td className="px-3 sm:px-5 py-4 text-right">
                         <span className="text-14 font-bold" style={{ color: 'var(--text-primary)' }}>{formatCurrency(brand.totalEarned)}</span>
                       </td>
-                      <td className="px-5 py-4 text-right">
+                      <td className="px-3 sm:px-5 py-4 text-right">
                         <span className="text-14 font-semibold" style={{ color: 'var(--text-primary)' }}>{brand.repCount}</span>
                       </td>
-                      <td className="px-5 py-4 text-right">
+                      <td className="px-3 sm:px-5 py-4 text-right">
                         <span className="text-14 font-bold" style={{
                           color: cprStatus === 'high' ? 'var(--accent-red)' : cprStatus === 'low' ? 'var(--accent-green)' : 'var(--text-primary)',
                         }}>
                           {formatCurrency(brand.costPerRep)}
                         </span>
                       </td>
-                      <td className="px-5 py-4 text-right">
+                      <td className="px-3 sm:px-5 py-4 text-right">
                         <span className="text-14 font-semibold" style={{ color: brand.avgGP >= GP_STRONG ? 'var(--accent-green)' : brand.avgGP < GP_WATCH ? 'var(--accent-red)' : 'var(--text-primary)' }}>{formatPercent(brand.avgGP)}</span>
                       </td>
-                      <td className="px-5 py-4 text-right">
+                      <td className="px-3 sm:px-5 py-4 text-right">
                         <span className="text-14 font-semibold" style={{ color: 'var(--text-secondary)' }}>{formatPercent(brand.avgRate * 100)}</span>
                       </td>
-                      <td className="px-5 py-4">
+                      <td className="px-3 sm:px-5 py-4">
                         <div className="flex items-center justify-center gap-2">
                           <div className="w-16 h-6">
                             <ResponsiveContainer width="100%" height="100%">
@@ -384,14 +385,14 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
 
       {/* Portfolio Summary Footer */}
       <div
-        className="rounded-lg p-6 flex flex-wrap items-center justify-between gap-6"
+        className="rounded-lg p-3 sm:p-6 flex flex-col sm:flex-row flex-wrap items-center justify-between gap-3 sm:gap-6"
         style={{
           backgroundColor: 'var(--bg-card)',
           boxShadow: 'var(--shadow-sm)',
           borderTop: '2px solid var(--accent-blue)',
         }}
       >
-        <div className="flex items-center gap-8 flex-wrap">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-8 flex-wrap">
           <div>
             <p className="text-12 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Portfolio Total</p>
             <p className="text-20 font-bold mt-1" style={{ color: 'var(--text-primary)' }}>
@@ -413,7 +414,7 @@ export default function MultiBrandOverview({ selectedBrand = 'all' }: MultiBrand
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-6 text-12 font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+        <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-12 font-semibold" style={{ color: 'var(--text-tertiary)' }}>
           <span className="inline-flex items-center gap-2">
             <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#ef4444' }} />
             Cost/Rep ≥ $26K

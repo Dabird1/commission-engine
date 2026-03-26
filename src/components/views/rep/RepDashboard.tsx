@@ -96,18 +96,18 @@ export default function RepDashboard() {
 
       {/* ===== HERO STRIP ===== */}
       <div
-        className="flex-shrink-0 px-4 md:px-6 py-2 relative overflow-hidden"
+        className="flex-shrink-0 px-3 sm:px-4 md:px-6 py-2 relative overflow-hidden"
         style={{ background: 'var(--hero-gradient)' }}
       >
         {/* Radial glow */}
         <div className="absolute inset-0 pointer-events-none" style={{
           background: 'radial-gradient(ellipse at 25% 50%, rgba(59,130,246,0.2) 0%, transparent 55%), radial-gradient(ellipse at 75% 30%, rgba(99,102,241,0.08) 0%, transparent 50%)',
         }} />
-        <div className="flex items-center justify-between max-w-[1440px] mx-auto relative z-10">
-          <div className="animate-fade-up">
-            <div className="flex items-center gap-2.5 mb-1">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between max-w-[1440px] mx-auto relative z-10 gap-3 sm:gap-0">
+          <div className="animate-fade-up w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2.5 mb-1">
               <p className="text-[14px] font-semibold text-blue-300/70 uppercase tracking-[0.14em]">YTD Earned</p>
-              <span className="text-[14px] font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full">+12% YoY</span>
+              <span className="text-[14px] font-bold text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full w-fit">+12% YoY</span>
             </div>
             <span className="text-3xl md:text-4xl font-black text-white tracking-tight leading-none">
               {formatCurrency(currentUser.ytdEarnings)}
@@ -162,9 +162,9 @@ export default function RepDashboard() {
       </div>
 
       {/* ===== KPI STAT PILLS ===== */}
-      <div className="flex-shrink-0 px-4 md:px-6 pt-1.5 pb-1" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div className="flex-shrink-0 px-3 sm:px-4 md:px-6 pt-1.5 pb-1 overflow-x-auto" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="max-w-[1440px] mx-auto">
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2 min-w-min sm:min-w-0">
             {[
               { label: 'Quota Progress', value: `${currentUser.quotaProgress}%`, sub: `$${((currentUser.quotaTarget - currentUser.ytdEarnings) / 1000).toFixed(0)}K to target`, tint: 'var(--tint-blue)', color: currentUser.quotaProgress >= 100 ? 'var(--semantic-paid)' : 'var(--accent-blue)', borderColor: 'rgba(59,130,246,0.2)' },
               { label: 'Avg GP', value: `${currentUser.avgGP}%`, sub: `${currentUser.tier} tier · ${currentUser.gpToNextTier}% to next`, tint: 'var(--tint-green)', color: 'var(--semantic-paid)', borderColor: 'rgba(16,185,129,0.2)' },
@@ -186,9 +186,9 @@ export default function RepDashboard() {
       </div>
 
       {/* ===== 9-CARD GRID ===== */}
-      <div className="flex-1 min-h-0 px-4 md:px-6 pt-1.5 pb-1 overflow-y-auto lg:overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="max-w-[1440px] mx-auto h-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 h-full" style={{ gridTemplateRows: 'repeat(3, minmax(0, 1fr))' }}>
+      <div className="flex-1 min-h-0 px-3 sm:px-4 md:px-6 pt-1.5 pb-1 overflow-y-auto lg:overflow-hidden" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="max-w-[1440px] mx-auto h-full w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 sm:gap-2 h-full min-h-0" style={{ gridTemplateRows: 'repeat(3, minmax(0, 1fr))' }}>
 
             {/* ─── CARD 1: EARNINGS BREAKDOWN ─── */}
             <Card accent="green" animDelay={1}>
@@ -197,7 +197,7 @@ export default function RepDashboard() {
                 title="Earnings"
                 badge={<span className="text-[14px] font-black" style={{ color: 'var(--accent-green)' }}>{formatCurrency(currentUser.ytdEarnings)}</span>}
               />
-              <div className="px-3 pb-1.5 flex-1 flex flex-col justify-between">
+              <div className="px-2 sm:px-3 pb-1.5 flex-1 flex flex-col justify-between min-w-0">
                 <div className="space-y-2">
                   {[
                     { label: 'Front-End Paid', value: currentUser.ytdFrontPaid, note: `${currentUser.ytdJobsSold} jobs`, color: 'var(--semantic-paid)', pct: currentUser.ytdFrontPaid / currentUser.ytdEarnings },
@@ -236,7 +236,7 @@ export default function RepDashboard() {
                   </span>
                 }
               />
-              <div className="px-3 pb-1.5 flex-1 flex flex-col justify-between">
+              <div className="px-2 sm:px-3 pb-1.5 flex-1 flex flex-col justify-between min-w-0">
                 <div>
                   <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{repPipeline.topDeal.customerName}</p>
                   <p className="text-[14px] capitalize" style={{ color: 'var(--text-tertiary)' }}>
@@ -269,7 +269,7 @@ export default function RepDashboard() {
                 title="Tier & Rate"
                 badge={<TierBadge tier={currentUser.tier} size="sm" />}
               />
-              <div className="px-3 pb-1.5 flex-1 flex flex-col justify-between">
+              <div className="px-2 sm:px-3 pb-1.5 flex-1 flex flex-col justify-between min-w-0">
                 <div className="space-y-1">
                   {[
                     { name: 'Platinum', gp: '45%+', rate: '10%', active: false, reached: false },
@@ -324,7 +324,7 @@ export default function RepDashboard() {
                 title="Pipeline"
                 badge={<span className="text-[14px] font-bold px-2 py-0.5 rounded-full" style={{ backgroundColor: 'var(--tint-blue)', color: 'var(--accent-blue)' }}>{repPipeline.totalActive} active</span>}
               />
-              <div className="px-3 pb-1.5 flex-1 flex flex-col justify-between">
+              <div className="px-2 sm:px-3 pb-1.5 flex-1 flex flex-col justify-between min-w-0">
                 <div className="space-y-2">
                   {[
                     { stage: 'Sold', ...repPipeline.stages.sold, color: 'var(--semantic-earned)' },
@@ -368,7 +368,7 @@ export default function RepDashboard() {
                   </div>
                 }
               />
-              <div className="p-2 flex-1 min-h-0">
+              <div className="p-1 sm:p-2 flex-1 min-h-0 overflow-x-auto" style={{ scrollbarWidth: 'thin' }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={recentTrends} margin={{ top: 5, right: 5, bottom: 0, left: -20 }}>
                     <defs>
@@ -396,7 +396,7 @@ export default function RepDashboard() {
                 title="Leaderboard"
                 badge={<span className="text-[14px] font-black" style={{ color: 'var(--accent-amber)' }}>#{currentUser.leaderboardRank}</span>}
               />
-              <div className="px-3 pb-1.5 flex-1 flex flex-col justify-between">
+              <div className="px-2 sm:px-3 pb-1.5 flex-1 flex flex-col justify-between min-w-0">
                 <div className="flex items-center gap-3">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-black text-white flex-shrink-0"
@@ -518,7 +518,7 @@ export default function RepDashboard() {
                   </span>
                 }
               />
-              <div className="flex-1 overflow-y-auto px-3 pb-2" style={{ scrollbarWidth: 'thin' }}>
+              <div className="flex-1 overflow-y-auto px-2 sm:px-3 pb-2" style={{ scrollbarWidth: 'thin' }}>
                 <div className="space-y-1.5">
                   {repMilestones.map((ms: any) => {
                     const valueColor = ms.value === 'Integrity' ? '#3b82f6' : ms.value === 'Hard Work' ? '#f59e0b' : '#10b981';

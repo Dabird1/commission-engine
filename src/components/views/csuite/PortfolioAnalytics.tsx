@@ -55,10 +55,10 @@ export default function PortfolioAnalytics() {
       </div>
 
       {/* CEO KPI Row — 5 Big Numbers */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
         {/* Total Commission Cost */}
         <div
-          className="rounded-lg border p-6"
+          className="rounded-lg border p-3 sm:p-6"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -165,13 +165,13 @@ export default function PortfolioAnalytics() {
 
       {/* Status Snapshot */}
       <div
-        className="grid grid-cols-3 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
         style={{
           backgroundColor: 'var(--bg-card)',
           borderColor: 'var(--border-primary)',
           border: '1px solid var(--border-primary)',
           borderRadius: '8px',
-          padding: '24px',
+          padding: '16px 12px sm:24px',
         }}
       >
         <div className="text-center">
@@ -211,7 +211,7 @@ export default function PortfolioAnalytics() {
 
       {/* Top 10 Brands by Commission Cost */}
       <div
-        className="rounded-lg border p-8"
+        className="rounded-lg border p-3 sm:p-8"
         style={{
           backgroundColor: 'var(--bg-card)',
           borderColor: 'var(--border-primary)',
@@ -248,7 +248,7 @@ export default function PortfolioAnalytics() {
           boxShadow: 'var(--shadow-sm)',
         }}
       >
-        <div className="px-8 py-6 border-b" style={{ borderColor: 'var(--border-secondary)' }}>
+        <div className="px-3 sm:px-8 py-3 sm:py-6 border-b" style={{ borderColor: 'var(--border-secondary)' }}>
           <h2 className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>
             All 25 Brands — Full Portfolio Breakdown
           </h2>
@@ -257,28 +257,28 @@ export default function PortfolioAnalytics() {
           <table className="w-full">
             <thead>
               <tr style={{ borderBottomColor: 'var(--border-secondary)' }} className="border-b">
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Rank
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Brand
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   YTD Commission
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Reps
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Cost/Rep
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Avg GP%
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Avg Rate
                 </th>
-                <th className="px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
+                <th className="px-3 sm:px-8 py-4 text-left text-sm font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                   Health
                 </th>
               </tr>
@@ -295,28 +295,28 @@ export default function PortfolioAnalytics() {
                     }}
                     className="border-b hover:bg-opacity-50"
                   >
-                    <td className="px-8 py-4 text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm font-bold" style={{ color: 'var(--text-primary)' }}>
                       {idx + 1}
                     </td>
-                    <td className="px-8 py-4 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
                       {brand.brandName}
                     </td>
-                    <td className="px-8 py-4 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
                       {formatCurrency(brand.totalEarned)}
                     </td>
-                    <td className="px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
                       {brand.repCount}
                     </td>
-                    <td className="px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
                       {formatCurrency(brand.costPerRep)}
                     </td>
-                    <td className="px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
                       {formatPercent(brand.avgGP)}
                     </td>
-                    <td className="px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-8 py-4 text-sm" style={{ color: 'var(--text-primary)' }}>
                       {formatPercent(brand.avgRate * 100)}
                     </td>
-                    <td className="px-8 py-4 text-sm">
+                    <td className="px-3 sm:px-8 py-4 text-sm">
                       <span
                         className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold"
                         style={{
@@ -337,7 +337,7 @@ export default function PortfolioAnalytics() {
 
       {/* Executive Summary Box */}
       <div
-        className="rounded-lg border p-8"
+        className="rounded-lg border p-3 sm:p-8"
         style={{
           backgroundColor: 'rgba(59, 130, 246, 0.05)',
           borderColor: 'var(--accent-blue)',
@@ -348,7 +348,7 @@ export default function PortfolioAnalytics() {
           <TrendingUp size={22} style={{ color: 'var(--accent-blue)' }} />
           Executive Summary
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm" style={{ color: 'var(--text-secondary)' }}>
           <div>
             <strong>Top Performer:</strong> {sortedBrands[0].brandName} leads with {formatCurrency(sortedBrands[0].totalEarned)} YTD
           </div>

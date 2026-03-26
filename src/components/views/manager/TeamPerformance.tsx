@@ -67,11 +67,11 @@ export default function TeamPerformance() {
   }
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-4 p-3 sm:space-y-8 sm:p-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-[var(--text-primary)]">Team Performance</h1>
-        <p className="mt-2 text-[var(--text-secondary)]">Individual metrics and quota tracking</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">Team Performance</h1>
+        <p className="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">Individual metrics and quota tracking</p>
       </div>
 
       {/* Performance Table */}
@@ -80,15 +80,15 @@ export default function TeamPerformance() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-[var(--border-color)] bg-[var(--bg-secondary)]">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--text-primary)]">Rep Name</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Jobs</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Total Earned</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Close Rate</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Avg GP%</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Avg Deal Size</th>
-                <th className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Quota %</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-[var(--text-primary)]">Status</th>
-                <th className="px-6 py-4 text-center text-sm font-semibold text-[var(--text-primary)]"></th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Rep Name</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Jobs</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Total Earned</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Close Rate</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Avg GP%</th>
+                <th className="hidden lg:table-cell px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Avg Deal Size</th>
+                <th className="hidden md:table-cell px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">Quota %</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-center text-xs sm:text-sm font-semibold text-[var(--text-primary)]">Status</th>
+                <th className="px-2 py-2 sm:px-6 sm:py-4 text-center text-sm font-semibold text-[var(--text-primary)]"></th>
               </tr>
             </thead>
             <tbody>
@@ -100,23 +100,23 @@ export default function TeamPerformance() {
                       setExpandedRep(expandedRep === rep.id ? null : rep.id)
                     }
                   >
-                    <td className="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{rep.name}</td>
-                    <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.jobsCount}</td>
-                    <td className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm font-medium text-[var(--text-primary)]">{rep.name}</td>
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm text-[var(--text-secondary)]">{rep.jobsCount}</td>
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm font-semibold text-[var(--text-primary)]">
                       {formatCurrency(rep.ytdEarnings)}
                     </td>
-                    <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.closeRate}%</td>
-                    <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.avgGP}%</td>
-                    <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm text-[var(--text-secondary)]">{rep.closeRate}%</td>
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm text-[var(--text-secondary)]">{rep.avgGP}%</td>
+                    <td className="hidden lg:table-cell px-6 py-4 text-right text-sm text-[var(--text-secondary)]">
                       {formatCurrency(rep.avgDealSize)}
                     </td>
-                    <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.quotaPercent}%</td>
-                    <td className="px-6 py-4 text-center">
-                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(rep.status)}`}>
+                    <td className="hidden md:table-cell px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.quotaPercent}%</td>
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-center">
+                      <span className={`inline-block px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold ${getStatusColor(rep.status)}`}>
                         {getStatusLabel(rep.status)}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-2 py-2 sm:px-6 sm:py-4 text-center">
                       {expandedRep === rep.id ? (
                         <ChevronUp className="h-4 w-4 text-[var(--text-secondary)]" />
                       ) : (
@@ -126,8 +126,8 @@ export default function TeamPerformance() {
                   </tr>
                   {expandedRep === rep.id && (
                     <tr className="border-b border-[var(--border-color)] bg-[var(--bg-secondary)]">
-                      <td colSpan={9} className="px-6 py-4">
-                        <div className="grid gap-4 md:grid-cols-3">
+                      <td colSpan={9} className="px-2 py-2 sm:px-6 sm:py-4">
+                        <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                           <div>
                             <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Tier</p>
                             <p className="mt-1 text-sm font-semibold text-[var(--text-primary)]">
@@ -165,13 +165,13 @@ export default function TeamPerformance() {
       </div>
 
       {/* Coaching Insights */}
-      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">Coaching Insights</h2>
-        <div className="mt-4 space-y-3">
+        <div className="mt-3 sm:mt-4 space-y-2 sm:space-y-3">
           {coachingInsights.map((insight, idx) => (
-            <div key={idx} className="flex gap-3 rounded-lg bg-[var(--bg-secondary)] p-4">
+            <div key={idx} className="flex gap-2 sm:gap-3 rounded-lg bg-[var(--bg-secondary)] p-2 sm:p-4">
               <div className="flex-shrink-0 text-lg">💡</div>
-              <p className="text-sm text-[var(--text-secondary)]">{insight}</p>
+              <p className="text-xs sm:text-sm text-[var(--text-secondary)]">{insight}</p>
             </div>
           ))}
         </div>

@@ -117,7 +117,7 @@ export default function DealsPage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
       {/* KPI Strip — answers "Where's my money?" at a glance */}
-      <div className="flex-shrink-0 px-6 pt-4 pb-3" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div className="flex-shrink-0 px-3 sm:px-6 pt-4 pb-3" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="flex items-center justify-between mb-3">
           <div>
             <h1 className="text-2xl font-black tracking-tight" style={{ color: 'var(--text-primary)' }}>My Deals</h1>
@@ -141,7 +141,7 @@ export default function DealsPage() {
         </div>
 
         {/* KPI Cards */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3">
           {/* Needs Attention */}
           <div className="rounded-xl px-4 py-3" style={{
             backgroundColor: kpis.attentionCount > 0 ? 'rgba(239,68,68,0.06)' : 'var(--bg-card)',
@@ -204,7 +204,7 @@ export default function DealsPage() {
       </div>
 
       {/* Swim Lanes */}
-      <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4" style={{ scrollbarWidth: 'thin' }}>
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-4 space-y-4" style={{ scrollbarWidth: 'thin' }}>
 
         {/* Lane: Needs Attention */}
         {lanes.needsAttention.length > 0 && (
@@ -216,7 +216,7 @@ export default function DealsPage() {
             collapsed={!!collapsedLanes['attention']}
             onToggle={() => toggleLane('attention')}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3">
               {lanes.needsAttention.map((deal: any) => (
                 <DealCard key={deal.id} deal={deal} expanded={expandedDealId === deal.id}
                   onToggle={() => setExpandedDealId(expandedDealId === deal.id ? null : deal.id)}
@@ -236,7 +236,7 @@ export default function DealsPage() {
           onToggle={() => toggleLane('active')}
         >
           {lanes.activePipeline.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3">
               {lanes.activePipeline.map((deal: any) => (
                 <DealCard key={deal.id} deal={deal} expanded={expandedDealId === deal.id}
                   onToggle={() => setExpandedDealId(expandedDealId === deal.id ? null : deal.id)}
@@ -258,7 +258,7 @@ export default function DealsPage() {
           onToggle={() => toggleLane('completing')}
         >
           {lanes.completingSoon.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3">
               {lanes.completingSoon.map((deal: any) => (
                 <DealCard key={deal.id} deal={deal} expanded={expandedDealId === deal.id}
                   onToggle={() => setExpandedDealId(expandedDealId === deal.id ? null : deal.id)}
@@ -280,7 +280,7 @@ export default function DealsPage() {
           onToggle={() => toggleLane('paid')}
         >
           {lanes.recentlyPaid.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3">
               {lanes.recentlyPaid.map((deal: any) => (
                 <DealCard key={deal.id} deal={deal} expanded={expandedDealId === deal.id}
                   onToggle={() => setExpandedDealId(expandedDealId === deal.id ? null : deal.id)}
@@ -445,7 +445,7 @@ function DealCard({ deal, expanded, onToggle, accent, badge }: {
           </div>
 
           {/* Front/Back Split */}
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             <div className="rounded-lg p-2.5" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-primary)' }}>
               <p className="text-[9px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Front-End (50%)</p>
               <p className="text-sm font-bold mt-0.5" style={{ color: 'var(--text-primary)' }}>{formatCurrency(deal.frontEnd)}</p>

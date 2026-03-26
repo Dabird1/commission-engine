@@ -187,20 +187,20 @@ export default function SpifBuilder() {
       </div>
 
       {/* Portfolio KPI Strip */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        <div className="rounded-lg p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
+        <div className="rounded-lg p-3 sm:p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
           <div className="text-sm font-semibold uppercase mb-2" style={{ color: 'var(--text-secondary)' }}>Total Active Budget</div>
           <div className="text-[22px] font-bold" style={{ color: 'var(--text-primary)' }}>${(totalBudget / 1000).toFixed(0)}K</div>
         </div>
-        <div className="rounded-lg p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
+        <div className="rounded-lg p-3 sm:p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
           <div className="text-sm font-semibold uppercase mb-2" style={{ color: 'var(--text-secondary)' }}>Total Earned This Period</div>
           <div className="text-[22px] font-bold" style={{ color: 'var(--accent-green)' }}>${(totalEarned / 1000).toFixed(0)}K</div>
         </div>
-        <div className="rounded-lg p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
+        <div className="rounded-lg p-3 sm:p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
           <div className="text-sm font-semibold uppercase mb-2" style={{ color: 'var(--text-secondary)' }}>Avg Participation Rate</div>
           <div className="text-[22px] font-bold" style={{ color: 'var(--text-primary)' }}>{avgParticipation} reps</div>
         </div>
-        <div className="rounded-lg p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
+        <div className="rounded-lg p-3 sm:p-6" style={{ backgroundColor: 'var(--bg-card)', border: `1px solid var(--border-primary)` }}>
           <div className="text-sm font-semibold uppercase mb-2" style={{ color: 'var(--text-secondary)' }}>ROI</div>
           <div className="text-[22px] font-bold" style={{ color: 'var(--accent-green)' }}>${portfolioROI}/incentive</div>
         </div>
@@ -249,7 +249,7 @@ export default function SpifBuilder() {
                   </div>
 
                   {/* Inline Metrics */}
-                  <div className="grid grid-cols-3 gap-4 mb-4 pb-4" style={{ borderBottom: `1px solid var(--border-primary)` }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 mb-4 pb-4" style={{ borderBottom: `1px solid var(--border-primary)` }}>
                     <div className="flex items-center gap-2">
                       <Users size={16} style={{ color: 'var(--text-secondary)' }} />
                       <div>
@@ -274,7 +274,7 @@ export default function SpifBuilder() {
                   </div>
 
                   {/* Quick Actions */}
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <button onClick={() => setExpandedDetailId(expandedDetailId === program.id ? null : program.id)}
                       className="flex-1 px-3 py-2 rounded text-sm font-semibold transition-opacity hover:opacity-75" style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}>
                       {expandedDetailId === program.id ? 'Hide Details' : 'View Details'}
@@ -357,7 +357,7 @@ export default function SpifBuilder() {
               </button>
             </div>
 
-            <div className="p-6 space-y-6">
+            <div className="p-3 sm:p-6 space-y-6">
               {/* Program Name */}
               <div>
                 <label className="block text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Program Name *</label>
@@ -385,7 +385,7 @@ export default function SpifBuilder() {
               </div>
 
               {/* Duration */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Start Date *</label>
                   <input

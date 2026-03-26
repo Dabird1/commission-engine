@@ -178,7 +178,7 @@ export default function BrandOnboarding() {
                     className="w-full px-3 py-2 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
                     style={{ borderColor: 'var(--border-primary)' }} />
                 </div>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-sm font-semibold text-[var(--text-secondary)] mb-2">City</label>
                     <input type="text" value={city} onChange={e => setCity(e.target.value)} placeholder="Columbus"
@@ -339,8 +339,8 @@ export default function BrandOnboarding() {
             <h2 className="text-lg font-bold text-[var(--text-primary)] mb-4">Commission Tiers</h2>
             <div className="space-y-2">
               {tiers.map((tier, idx) => (
-                <div key={tier.id} className="rounded-lg border p-3 flex items-end gap-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
-                  <div className="flex-1 grid grid-cols-4 gap-2">
+                <div key={tier.id} className="rounded-lg border p-3 flex flex-col sm:flex-row items-end gap-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+                  <div className="flex-1 grid grid-cols-2 sm:grid-cols-4 gap-2">
                     <div>
                       <label className="text-sm text-[var(--text-secondary)] font-semibold block mb-1">Label</label>
                       <input type="text" value={tier.label} onChange={e => updateTier(tier.id, 'label', e.target.value)}
@@ -478,7 +478,7 @@ export default function BrandOnboarding() {
       </div>
 
       {/* Footer */}
-      <div className="flex-shrink-0 px-6 py-4 border-t flex items-center justify-between" style={{ borderColor: 'var(--border-primary)' }}>
+      <div className="flex-shrink-0 px-3 sm:px-6 py-4 border-t flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3" style={{ borderColor: 'var(--border-primary)' }}>
         <button onClick={prev} disabled={step === 1}
           className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-opacity disabled:opacity-50"
           style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>

@@ -152,7 +152,7 @@ export default function CostTrends() {
       }}
     >
       {/* ROW 1: Title + Subtitle + Metric Tabs — All on one line */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-3 sm:gap-0">
         <div className="flex flex-col">
           <h1 className="font-bold" style={{ fontSize: '28px', color: 'var(--text-primary)' }}>
             Cost Trends
@@ -163,7 +163,7 @@ export default function CostTrends() {
         </div>
 
         {/* Metric Selector Tabs — right side */}
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2 w-full sm:w-auto">
           {(Object.keys(metricLabels) as MetricType[]).map((metric) => (
             <button
               key={metric}
@@ -183,10 +183,10 @@ export default function CostTrends() {
       </div>
 
       {/* ROW 2: Insight Cards — The KEY insights at the top */}
-      <div className="grid grid-cols-4 gap-4 mb-6 flex-shrink-0">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 flex-shrink-0">
         {/* Portfolio Cost Trend */}
         <div
-          className="rounded-lg border p-5"
+          className="rounded-lg border p-3 sm:p-5"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -264,7 +264,7 @@ export default function CostTrends() {
 
       {/* ROW 3: 12-Month Trend Chart — Grows to fill remaining space */}
       <div
-        className="rounded-lg border p-6 mb-6 flex-grow flex flex-col"
+        className="rounded-lg border p-3 sm:p-6 mb-6 flex-grow flex flex-col"
         style={{
           backgroundColor: 'var(--bg-card)',
           borderColor: 'var(--border-primary)',
@@ -312,23 +312,23 @@ export default function CostTrends() {
           borderColor: 'var(--border-primary)',
         }}
       >
-        <div className="px-6 py-4 border-b" style={{ borderColor: 'var(--border-primary)', fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
+        <div className="px-3 sm:px-6 py-4 border-b" style={{ borderColor: 'var(--border-primary)', fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
           Period-over-Period: Apr 2025 vs Mar 2026
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr style={{ borderBottomColor: 'var(--border-primary)' }} className="border-b">
-                <th className="px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
+                <th className="px-3 sm:px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
                   Brand
                 </th>
-                <th className="px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
+                <th className="px-3 sm:px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
                   Apr 2025
                 </th>
-                <th className="px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
+                <th className="px-3 sm:px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
                   Mar 2026
                 </th>
-                <th className="px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
+                <th className="px-3 sm:px-6 py-3 text-left" style={{ fontSize: '13px', fontWeight: '600', color: 'var(--text-secondary)' }}>
                   Change %
                 </th>
               </tr>
@@ -348,16 +348,16 @@ export default function CostTrends() {
                     }}
                     className="border-b"
                   >
-                    <td className="px-6 py-3" style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-6 py-3" style={{ fontSize: '14px', fontWeight: '500', color: 'var(--text-primary)' }}>
                       {item.brand}
                     </td>
-                    <td className="px-6 py-3" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-6 py-3" style={{ fontSize: '14px', color: 'var(--text-primary)' }}>
                       {formatValue(item.firstValue, selectedMetric)}
                     </td>
-                    <td className="px-6 py-3" style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
+                    <td className="px-3 sm:px-6 py-3" style={{ fontSize: '14px', fontWeight: '600', color: 'var(--text-primary)' }}>
                       {formatValue(item.lastValue, selectedMetric)}
                     </td>
-                    <td className="px-6 py-3" style={{ fontSize: '14px', fontWeight: '600', color: isIncrease ? 'var(--accent-red)' : 'var(--accent-green)' }}>
+                    <td className="px-3 sm:px-6 py-3" style={{ fontSize: '14px', fontWeight: '600', color: isIncrease ? 'var(--accent-red)' : 'var(--accent-green)' }}>
                       {isIncrease ? '+' : ''}{percentChange.toFixed(1)}%
                     </td>
                   </tr>

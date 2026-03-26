@@ -96,7 +96,7 @@ export default function PayrollStatus() {
   const readyCount = brandReadinessData.filter((b) => b.status === 'ready').length;
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-3 sm:p-8 space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-[28px] font-bold text-[var(--text-primary)] mb-1">Payroll Status</h1>
@@ -104,16 +104,16 @@ export default function PayrollStatus() {
       </div>
 
       {/* Hero: Big Numbers + Health At A Glance */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {/* Total to Push */}
-        <div className="bg-gradient-to-br from-[var(--accent-blue)] to-[var(--accent-blue)]/80 rounded-lg p-6 text-white col-span-2">
+        <div className="bg-gradient-to-br from-[var(--accent-blue)] to-[var(--accent-blue)]/80 rounded-lg p-3 sm:p-6 text-white sm:col-span-2 lg:col-span-2">
           <p className="text-[14px] text-white/80 mb-3">Total Ready to Push</p>
           <p className="text-[48px] font-bold mb-2">${(totalToPush / 1000).toFixed(1)}K</p>
           <p className="text-[14px] text-white/70">Across {readyCount} brands</p>
         </div>
 
         {/* Integration Health Summary */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-6">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-6">
           <p className="text-[14px] text-[var(--text-secondary)] mb-4 font-medium">Integrations</p>
           <div className="space-y-3">
             {integrationHealth.map((int) => (
@@ -136,7 +136,7 @@ export default function PayrollStatus() {
         {/* Discrepancies Alert */}
         <div
           className={cn(
-            'rounded-lg p-6 border',
+            'rounded-lg p-3 sm:p-6 border',
             totalDiscrepancies > 0
               ? 'bg-red-50 border-red-200'
               : 'bg-green-50 border-green-200'
@@ -162,11 +162,11 @@ export default function PayrollStatus() {
       {/* Integration Detail Cards */}
       <div>
         <h2 className="text-[20px] font-semibold text-[var(--text-primary)] mb-4">Sync Status</h2>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {integrationHealth.map((integration) => (
             <div
               key={integration.name}
-              className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-5"
+              className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-5"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-[16px] font-semibold text-[var(--text-primary)]">
@@ -214,19 +214,19 @@ export default function PayrollStatus() {
           <table className="w-full">
             <thead>
               <tr className="border-b border-[var(--border-primary)] bg-[var(--bg-secondary)]">
-                <th className="text-left py-3 px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
+                <th className="text-left py-3 px-3 sm:px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
                   Brand
                 </th>
-                <th className="text-right py-3 px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
+                <th className="text-right py-3 px-3 sm:px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
                   Calculated
                 </th>
-                <th className="text-right py-3 px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
+                <th className="text-right py-3 px-3 sm:px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
                   Verified
                 </th>
-                <th className="text-center py-3 px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
+                <th className="text-center py-3 px-3 sm:px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
                   Status
                 </th>
-                <th className="text-center py-3 px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
+                <th className="text-center py-3 px-3 sm:px-5 font-semibold text-[14px] text-[var(--text-secondary)]">
                   Action
                 </th>
               </tr>
@@ -240,16 +240,16 @@ export default function PayrollStatus() {
                     idx % 2 === 0 && 'bg-[var(--bg-card)]'
                   )}
                 >
-                  <td className="py-4 px-5 text-[14px] text-[var(--text-primary)] font-semibold">
+                  <td className="py-4 px-3 sm:px-5 text-[14px] text-[var(--text-primary)] font-semibold">
                     {brand.brandName}
                   </td>
-                  <td className="py-4 px-5 text-right text-[14px] text-[var(--text-primary)] font-mono">
+                  <td className="py-4 px-3 sm:px-5 text-right text-[14px] text-[var(--text-primary)] font-mono">
                     ${brand.calculated.toLocaleString()}
                   </td>
-                  <td className="py-4 px-5 text-right text-[14px] text-[var(--text-primary)] font-mono">
+                  <td className="py-4 px-3 sm:px-5 text-right text-[14px] text-[var(--text-primary)] font-mono">
                     ${brand.verified.toLocaleString()}
                   </td>
-                  <td className="py-4 px-5 text-center">
+                  <td className="py-4 px-3 sm:px-5 text-center">
                     <span
                       className={cn(
                         'inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[14px] font-medium',
@@ -266,7 +266,7 @@ export default function PayrollStatus() {
                       {brand.status === 'hold' && 'Hold'}
                     </span>
                   </td>
-                  <td className="py-4 px-5 text-center">
+                  <td className="py-4 px-3 sm:px-5 text-center">
                     <button
                       onClick={() => handlePush(brand.brandId)}
                       disabled={brand.status !== 'ready'}

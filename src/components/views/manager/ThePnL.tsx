@@ -69,8 +69,8 @@ export default function ThePnL({ selectedBrand }: { selectedBrand?: string }) {
           {/* 5 Key Numbers Row */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: '12px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+            gap: '8px',
             marginBottom: '12px',
           }}>
             {/* Revenue */}
@@ -218,10 +218,12 @@ export default function ThePnL({ selectedBrand }: { selectedBrand?: string }) {
         {/* ===== TWO-COLUMN SECTION ===== */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: '1fr',
           gap: '16px',
           marginBottom: '16px',
-        }}>
+        }}
+        className="lg:grid-cols-2"
+        >
           {/* LEFT: THE WATERFALL */}
           <div style={{
             backgroundColor: 'var(--card-bg)',
@@ -373,10 +375,12 @@ export default function ThePnL({ selectedBrand }: { selectedBrand?: string }) {
             {/* Two scenarios side by side */}
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
+              gridTemplateColumns: '1fr',
               gap: '8px',
               marginBottom: '10px',
-            }}>
+            }}
+            className="sm:grid-cols-2"
+            >
               {/* Current GP */}
               <div style={{
                 backgroundColor: 'var(--bg-secondary)',
@@ -515,6 +519,7 @@ export default function ThePnL({ selectedBrand }: { selectedBrand?: string }) {
             <table style={{
               width: '100%',
               borderCollapse: 'collapse',
+              minWidth: '600px',
             }}>
               <thead>
                 <tr style={{

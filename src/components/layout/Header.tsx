@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bell, ChevronDown, Search, X, Settings, Moon, Sun, Mail, Smartphone, BarChart3, Eye, RefreshCw, Database, Shield, FileText, DollarSign, Users, Building } from 'lucide-react';
+import { Bell, ChevronDown, Search, X, Settings, Moon, Sun, Mail, Smartphone, BarChart3, Eye, RefreshCw, Database, Shield, FileText, DollarSign, Users, Building, Menu } from 'lucide-react';
 import { UserRole } from '@/types/commission';
 import { brands, notifications } from '@/data/sample-data';
 
@@ -12,6 +12,7 @@ interface HeaderProps {
   onBrandChange: (brandId: string) => void;
   isDark?: boolean;
   onThemeToggle?: () => void;
+  onMenuToggle?: () => void;
 }
 
 const viewTitles: Record<string, string> = {
@@ -66,7 +67,7 @@ function useClickOutside(ref: React.RefObject<HTMLElement | null>, handler: () =
   }, [ref, handler]);
 }
 
-export default function Header({ currentRole, activeView, selectedBrand, onBrandChange, isDark, onThemeToggle }: HeaderProps) {
+export default function Header({ currentRole, activeView, selectedBrand, onBrandChange, isDark, onThemeToggle, onMenuToggle }: HeaderProps) {
   const [notifOpen, setNotifOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [brandOpen, setBrandOpen] = useState(false);
@@ -133,14 +134,26 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
 
   return (
     <header
-      className="h-14 flex items-center justify-between px-6 border-b"
+      className="h-14 flex items-center justify-between px-3 sm:px-6 border-b"
       style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-subtle)' }}
     >
-      <h1 className="text-base font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
-        {viewTitles[activeView] || activeView}
-      </h1>
+      <div className="flex items-center gap-2 min-w-0">
+        {/* Hamburger menu — mobile only */}
+        <button
+          onClick={onMenuToggle}
+          className="lg:hidden p-2 rounded-lg transition-colors flex-shrink-0"
+          style={{ color: 'var(--text-primary)' }}
+          onMouseEnter={e => (e.currentTarget.style.backgroundColor = 'var(--bg-hover)')}
+          onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+        >
+          <Menu size={20} strokeWidth={1.8} />
+        </button>
+        <h1 className="text-sm sm:text-base font-bold tracking-tight truncate" style={{ color: 'var(--text-primary)' }}>
+          {viewTitles[activeView] || activeView}
+        </h1>
+      </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
         {/* Brand Selector */}
         {showBrandSelector && (
           <div className="relative" ref={brandRef}>
@@ -153,7 +166,7 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
                 backgroundColor: 'var(--bg-card)',
               }}
             >
-              <span className="max-w-[180px] truncate">
+              <span className="max-w-[100px] sm:max-w-[180px] truncate">
                 {selectedBrand === 'all' ? 'All Brands' : brands.find((b: any) => b.id === selectedBrand)?.name}
               </span>
               <ChevronDown size={14} className={`transition-transform ${brandOpen ? 'rotate-180' : ''}`} />
@@ -161,7 +174,7 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
 
             {brandOpen && (
               <div
-                className="absolute right-0 top-full mt-1 w-64 rounded-xl border overflow-hidden z-50"
+                className="absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-64 max-w-64 rounded-xl border overflow-hidden z-50"
                 style={{
                   backgroundColor: 'var(--bg-card)',
                   borderColor: 'var(--border-primary)',
@@ -281,7 +294,7 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
 
           {settingsOpen && (
             <div
-              className="absolute right-0 top-full mt-1 w-80 rounded-xl border overflow-hidden z-50"
+              className="absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-80 max-w-80 rounded-xl border overflow-hidden z-50"
               style={{
                 backgroundColor: 'var(--bg-card)',
                 borderColor: 'var(--border-primary)',
@@ -581,7 +594,7 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
 
           {notifOpen && (
             <div
-              className="absolute right-0 top-full mt-1 w-80 rounded-xl border overflow-hidden z-50"
+              className="absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-80 max-w-80 rounded-xl border overflow-hidden z-50"
               style={{
                 backgroundColor: 'var(--bg-card)',
                 borderColor: 'var(--border-primary)',

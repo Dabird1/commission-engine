@@ -83,7 +83,7 @@ export default function ChatWithHR() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 z-50 w-11 h-11 rounded-full text-white flex items-center justify-center transition-all hover:scale-110 active:scale-95 group"
+        className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 w-11 h-11 rounded-full text-white flex items-center justify-center transition-all hover:scale-110 active:scale-95 group"
         style={{
           background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
           boxShadow: '0 3px 12px rgba(59,130,246,0.35)',
@@ -99,7 +99,7 @@ export default function ChatWithHR() {
     return (
       <button
         onClick={() => setIsMinimized(false)}
-        className="fixed bottom-4 right-4 z-50 flex items-center gap-2 px-3 py-2 rounded-full text-white text-xs font-semibold transition-all hover:scale-105"
+        className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 flex items-center gap-2 px-3 py-2 rounded-full text-white text-xs font-semibold transition-all hover:scale-105"
         style={{
           background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
           boxShadow: '0 3px 12px rgba(59,130,246,0.35)',
@@ -113,7 +113,7 @@ export default function ChatWithHR() {
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-50 w-[360px] rounded-2xl overflow-hidden flex flex-col"
+      className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50 w-full max-w-[360px] rounded-2xl overflow-hidden flex flex-col sm:w-[360px]"
       style={{
         height: '480px',
         backgroundColor: 'var(--bg-card)',
@@ -122,7 +122,7 @@ export default function ChatWithHR() {
     >
       {/* Header */}
       <div
-        className="flex items-center justify-between px-4 py-3 flex-shrink-0"
+        className="flex items-center justify-between px-3 sm:px-4 py-3 flex-shrink-0"
         style={{ background: 'linear-gradient(135deg, #3b82f6, #6366f1)' }}
       >
         <div className="flex items-center gap-2">
@@ -154,7 +154,7 @@ export default function ChatWithHR() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3" style={{ scrollbarWidth: 'thin' }}>
+      <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-3 space-y-3" style={{ scrollbarWidth: 'thin' }}>
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -198,7 +198,7 @@ export default function ChatWithHR() {
 
       {/* Quick Replies (only show when few messages) */}
       {messages.length <= 2 && (
-        <div className="px-4 pb-2 flex flex-wrap gap-1.5">
+        <div className="px-3 sm:px-4 pb-2 flex flex-wrap gap-1.5">
           {QUICK_REPLIES.map((reply, i) => (
             <button
               key={i}
@@ -218,7 +218,7 @@ export default function ChatWithHR() {
 
       {/* Input */}
       <div
-        className="flex items-center gap-2 px-3 py-2.5 border-t flex-shrink-0"
+        className="flex items-center gap-2 px-2 sm:px-3 py-2.5 border-t flex-shrink-0"
         style={{ borderColor: 'var(--border-primary)' }}
       >
         <input

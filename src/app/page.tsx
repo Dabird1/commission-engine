@@ -57,6 +57,7 @@ export default function Home() {
   const [activeView, setActiveView] = useState('dashboard');
   const [selectedBrand, setSelectedBrand] = useState('all');
   const [isDark, setIsDark] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -114,8 +115,10 @@ export default function Home() {
         onViewChange={setActiveView}
         isDark={isDark}
         onThemeToggle={() => setIsDark(!isDark)}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
-      <div className="ml-[260px] min-h-screen flex flex-col">
+      <div className="ml-0 lg:ml-[260px] min-h-screen flex flex-col">
         <Header
           currentRole={currentRole}
           activeView={activeView}
@@ -123,6 +126,7 @@ export default function Home() {
           onBrandChange={setSelectedBrand}
           isDark={isDark}
           onThemeToggle={() => setIsDark(!isDark)}
+          onMenuToggle={() => setSidebarOpen(!sidebarOpen)}
         />
         <main className="flex-1" style={{ backgroundColor: 'var(--bg-secondary)' }}>
           {renderView()}

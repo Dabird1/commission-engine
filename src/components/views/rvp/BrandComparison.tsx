@@ -53,7 +53,7 @@ export default function BrandComparison() {
   ];
 
   return (
-    <div className="p-8 w-full space-y-5" style={{ maxWidth: '1400px' }}>
+    <div className="p-3 sm:p-8 w-full space-y-5" style={{ maxWidth: '1400px' }}>
       {/* Header */}
       <div>
         <h1 className="text-4xl font-bold" style={{ color: 'var(--text-primary)' }}>
@@ -65,7 +65,7 @@ export default function BrandComparison() {
       </div>
 
       {/* Brand Selectors — Above the fold, large and prominent */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label className="text-13 font-semibold" style={{ color: 'var(--text-tertiary)' }}>
             BRAND 1
@@ -119,7 +119,8 @@ export default function BrandComparison() {
           boxShadow: 'var(--shadow-sm)',
         }}
       >
-        <table className="w-full">
+        <div className="overflow-x-auto">
+          <table className="w-full">
           <thead>
             <tr style={{ backgroundColor: 'var(--bg-secondary)' }}>
               <th className="px-6 py-4 text-left text-13 font-semibold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
@@ -151,16 +152,16 @@ export default function BrandComparison() {
                   }}
                   className="border-b"
                 >
-                  <td className="px-6 py-4 text-14 font-semibold" style={{ color: 'var(--text-primary)' }}>
+                  <td className="px-3 sm:px-6 py-4 text-14 font-semibold" style={{ color: 'var(--text-primary)' }}>
                     {stat.label}
                   </td>
-                  <td className="px-6 py-4 text-14 font-bold" style={{ color: 'var(--text-primary)' }}>
+                  <td className="px-3 sm:px-6 py-4 text-14 font-bold" style={{ color: 'var(--text-primary)' }}>
                     {stat.isPercent ? formatPercent(stat.brand1) : formatCurrency(stat.brand1)}
                   </td>
-                  <td className="px-6 py-4 text-14 font-bold" style={{ color: 'var(--text-primary)' }}>
+                  <td className="px-3 sm:px-6 py-4 text-14 font-bold" style={{ color: 'var(--text-primary)' }}>
                     {stat.isPercent ? formatPercent(stat.brand2) : formatCurrency(stat.brand2)}
                   </td>
-                  <td className="px-6 py-4 text-14 font-bold">
+                  <td className="px-3 sm:px-6 py-4 text-14 font-bold">
                     <span
                       style={{
                         color: isPositive ? 'var(--accent-green)' : 'var(--accent-red)',
@@ -173,14 +174,15 @@ export default function BrandComparison() {
               );
             })}
           </tbody>
-        </table>
+          </table>
+        </div>
       </div>
 
       {/* Charts — Single row, no scrolling */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-5">
         {/* Commission Cost Comparison */}
         <div
-          className="rounded-lg border p-5"
+          className="rounded-lg border p-3 sm:p-5"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -214,7 +216,7 @@ export default function BrandComparison() {
 
         {/* Avg Rate Comparison */}
         <div
-          className="rounded-lg border p-5"
+          className="rounded-lg border p-3 sm:p-5"
           style={{
             backgroundColor: 'var(--bg-card)',
             borderColor: 'var(--border-primary)',
@@ -329,7 +331,7 @@ export default function BrandComparison() {
 
       {/* Insight callout */}
       <div
-        className="rounded-lg border p-6"
+        className="rounded-lg border p-3 sm:p-6"
         style={{
           backgroundColor: 'rgba(59, 130, 246, 0.05)',
           borderColor: 'var(--accent-blue)',

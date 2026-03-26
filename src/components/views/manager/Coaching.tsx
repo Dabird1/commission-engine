@@ -104,19 +104,20 @@ export default function Coaching({ selectedBrand }: { selectedBrand?: string }) 
   return (
     <div
       style={{ backgroundColor: 'var(--bg-secondary)' }}
-      className="h-[calc(100vh-3.5rem)] flex overflow-hidden"
+      className="h-[calc(100vh-3.5rem)] flex flex-col sm:flex-row overflow-hidden"
     >
       {/* LEFT PANEL: Rep Roster (~320px) */}
       <div
         style={{
           backgroundColor: 'var(--card-bg)',
           borderRight: '1px solid var(--border-color)',
-          width: '320px',
+          width: '100%',
           marginLeft: '12px',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
         }}
+        className="sm:w-80"
       >
         {/* Summary Header */}
         <div
@@ -203,14 +204,16 @@ export default function Coaching({ selectedBrand }: { selectedBrand?: string }) 
       </div>
 
       {/* RIGHT PANEL: Selected Rep Card */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '20px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '12px' }} className="sm:p-5">
         <div
           style={{
             backgroundColor: 'var(--card-bg)',
             border: '1px solid var(--border-color)',
             borderRadius: '8px',
-            padding: '28px',
+            padding: '16px',
           }}
+          className="sm:p-7"
+        >
         >
           {/* SECTION 1: Rep Header */}
           <div style={{ marginBottom: '24px' }}>
@@ -776,7 +779,7 @@ export default function Coaching({ selectedBrand }: { selectedBrand?: string }) 
             >
               Is The Coaching Working?
             </h2>
-            <div style={{ display: 'flex', gap: '28px', alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }} className="sm:gap-7">
               {gpTrend.map((point, idx) => {
                 const prev = idx > 0 ? gpTrend[idx - 1].gp : point.gp
                 const arrow = getTrendArrow(point.gp, prev)

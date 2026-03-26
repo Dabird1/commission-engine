@@ -62,17 +62,17 @@ export default function CostAnalysis() {
   const COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
 
   return (
-    <div className="space-y-8 p-8">
+    <div className="space-y-4 p-3 sm:space-y-8 sm:p-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-[var(--text-primary)]">Cost Analysis</h1>
-        <p className="mt-2 text-[var(--text-secondary)]">Commission expenses and cost optimization</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">Cost Analysis</h1>
+        <p className="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">Commission expenses and cost optimization</p>
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:gap-8 lg:grid-cols-2">
         {/* Commission Cost as % of Revenue */}
-        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">Commission Cost % of Revenue (12M)</h2>
           <div className="mt-6 h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -114,7 +114,7 @@ export default function CostAnalysis() {
         </div>
 
         {/* Cost per Rep Bar Chart */}
-        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+        <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
           <h2 className="text-lg font-semibold text-[var(--text-primary)]">Cost per Rep (YTD)</h2>
           <div className="mt-6 h-80">
             <ResponsiveContainer width="100%" height="100%">
@@ -149,9 +149,9 @@ export default function CostAnalysis() {
       </div>
 
       {/* Cost by Project Type */}
-      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">Cost by Project Type</h2>
-        <div className="mt-6 flex flex-col gap-8 lg:flex-row">
+        <div className="mt-4 sm:mt-6 flex flex-col gap-4 sm:gap-8 lg:flex-row">
           <div className="h-80 flex-1">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -180,7 +180,7 @@ export default function CostAnalysis() {
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="flex flex-1 flex-col justify-center gap-3">
+          <div className="flex flex-1 flex-col justify-center gap-2 sm:gap-3">
             {costByProjectData.map((item, idx) => (
               <div key={idx} className="flex items-center gap-3">
                 <div
@@ -199,13 +199,13 @@ export default function CostAnalysis() {
       </div>
 
       {/* Cost Simulator */}
-      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-6">
+      <div className="rounded-lg border border-[var(--border-color)] bg-[var(--card-bg)] p-3 sm:p-6">
         <h2 className="text-lg font-semibold text-[var(--text-primary)]">Hiring Impact Simulator</h2>
         <p className="mt-2 text-sm text-[var(--text-secondary)]">
           Estimate cost increases with new team members
         </p>
 
-        <div className="mt-6 space-y-6">
+        <div className="mt-4 sm:mt-6 space-y-4 sm:space-y-6">
           {/* Slider Control */}
           <div>
             <label className="block text-sm font-medium text-[var(--text-primary)]">
@@ -239,7 +239,7 @@ export default function CostAnalysis() {
           </div>
 
           {/* Results Grid */}
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Current Cost */}
             <div className="rounded-lg bg-[var(--bg-secondary)] p-4">
               <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Current Annual Cost</p>

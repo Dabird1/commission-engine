@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   LayoutDashboard, FileText, DollarSign, Trophy, BookOpen, Calculator,
   Users, TrendingUp, CheckSquare, PieChart, Building2, GitCompare,
   Brain, BarChart3, Settings, Shield, Clock, Search, FileCheck,
   Wallet, LineChart, RefreshCw, ClipboardList, Award, MessageSquare,
-  Zap, UserPlus, Sun, Moon, ChevronDown, Home
+  Zap, UserPlus, Sun, Moon, ChevronDown, Home, X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { UserRole } from '@/types/commission';
@@ -79,17 +79,44 @@ interface SidebarProps {
   onViewChange: (view: string) => void;
   isDark: boolean;
   onThemeToggle: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export default function Sidebar({ currentRole, onRoleChange, activeView, onViewChange, isDark, onThemeToggle }: SidebarProps) {
+export default function Sidebar({ currentRole, onRoleChange, activeView, onViewChange, isDark, onThemeToggle, isOpen, onClose }: SidebarProps) {
   const [roleOpen, setRoleOpen] = useState(false);
   const navItems = roleNavItems[currentRole];
 
+  // Close sidebar on navigation (mobile)
+  const handleViewChange = (view: string) => {
+    onViewChange(view);
+    onClose();
+  };
+
+  // Close on escape key
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', handleEsc);
+    return () => document.removeEventListener('keydown', handleEsc);
+  }, [onClose]);
+
   return (
-    <aside
-      className="fixed left-0 top-0 bottom-0 w-[260px] flex flex-col"
-      style={{ backgroundColor: 'var(--sidebar-bg)' }}
-    >
+    <>
+      {/* Mobile backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          onClick={onClose}
+        />
+      )}
+      <aside
+        className={cn(
+          "fixed left-0 top-0 bottom-0 w-[260px] flex flex-col z-50 transition-transform duration-300 ease-in-out",
+          "lg:translate-x-0",
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+        style={{ backgroundColor: 'var(--sidebar-bg)' }}
+      >
       {/* Logo */}
       <div className="px-5 pt-5 pb-4">
         <div className="flex items-center gap-3">
@@ -99,10 +126,17 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
           >
             IHS
           </div>
-          <div>
+          <div className="flex-1">
             <div className="text-[13px] font-bold tracking-[0.08em] text-white">INFINITY</div>
             <div className="text-[10px] font-medium text-slate-500">Commission Engine</div>
           </div>
+          {/* Mobile close button */}
+          <button
+            onClick={onClose}
+            className="lg:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+          >
+            <X size={18} />
+          </button>
         </div>
       </div>
 
@@ -129,7 +163,7 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
               {(Object.keys(roleLabels) as UserRole[]).map((role) => (
                 <button
                   key={role}
-                  onClick={() => { onRoleChange(role); setRoleOpen(false); onViewChange(roleNavItems[role][0].id); }}
+                  onClick={() => { onRoleChange(role); setRoleOpen(false); handleViewChange(roleNavItems[role][0].id); }}
                   className="w-full text-left px-4 py-2.5 text-[13px] transition-colors"
                   style={{
                     color: role === currentRole ? '#3b82f6' : 'rgba(255,255,255,0.7)',
@@ -158,7 +192,7 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
             return (
               <button
                 key={item.id}
-                onClick={() => onViewChange(item.id)}
+                onClick={() => handleViewChange(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] transition-all relative animate-fade-up stagger-${idx + 1}`}
                 style={{
                   color: isActive ? '#ffffff' : 'var(--sidebar-text)',
@@ -216,5 +250,6 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
         </div>
       </div>
     </aside>
+    </>
   );
 }

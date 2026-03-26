@@ -128,14 +128,14 @@ export default function CommissionsPage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
       {/* Hero — The Money Story */}
-      <div className="flex-shrink-0 px-6 pt-4 pb-3" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <div className="flex-shrink-0 px-3 sm:px-6 pt-4 pb-3" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <h1 className="text-2xl font-black tracking-tight mb-3" style={{ color: 'var(--text-primary)' }}>My Commissions</h1>
 
         {/* Money Flow: Earned → Paid → Pending — visual waterfall */}
         <div className="rounded-xl overflow-hidden mb-3" style={{ backgroundColor: 'var(--bg-card)', border: '1px solid var(--border-primary)' }}>
-          <div className="grid grid-cols-4 divide-x" style={{ borderColor: 'var(--border-primary)' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x" style={{ borderColor: 'var(--border-primary)' }}>
             {/* Total Earned */}
-            <div className="px-4 py-3">
+            <div className="px-3 sm:px-4 py-3">
               <div className="flex items-center gap-1.5 mb-1">
                 <Wallet size={12} style={{ color: 'var(--text-tertiary)' }} />
                 <span className="text-[14px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Total Earned</span>
@@ -145,7 +145,7 @@ export default function CommissionsPage() {
             </div>
 
             {/* In Your Pocket */}
-            <div className="px-4 py-3" style={{ backgroundColor: 'rgba(16,185,129,0.04)' }}>
+            <div className="px-3 sm:px-4 py-3" style={{ backgroundColor: 'rgba(16,185,129,0.04)' }}>
               <div className="flex items-center gap-1.5 mb-1">
                 <Banknote size={12} style={{ color: '#10b981' }} />
                 <span className="text-[14px] font-bold uppercase tracking-wider" style={{ color: '#10b981' }}>In Your Pocket</span>
@@ -155,7 +155,7 @@ export default function CommissionsPage() {
             </div>
 
             {/* Coming Your Way */}
-            <div className="px-4 py-3" style={{ backgroundColor: 'rgba(245,158,11,0.04)' }}>
+            <div className="px-3 sm:px-4 py-3" style={{ backgroundColor: 'rgba(245,158,11,0.04)' }}>
               <div className="flex items-center gap-1.5 mb-1">
                 <ArrowDownToLine size={12} style={{ color: '#f59e0b' }} />
                 <span className="text-[14px] font-bold uppercase tracking-wider" style={{ color: '#f59e0b' }}>Coming Your Way</span>
@@ -169,7 +169,7 @@ export default function CommissionsPage() {
             </div>
 
             {/* Adjustments */}
-            <div className="px-4 py-3">
+            <div className="px-3 sm:px-4 py-3">
               <div className="flex items-center gap-1.5 mb-1">
                 <AlertTriangle size={12} style={{ color: stats.totalAdjustments < 0 ? '#ef4444' : 'var(--text-tertiary)' }} />
                 <span className="text-[14px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Adjustments</span>
@@ -187,7 +187,7 @@ export default function CommissionsPage() {
             <div style={{ width: `${stats.totalEarned > 0 ? ((stats.earnedAwaitingPayout) / stats.totalEarned) * 100 : 0}%`, backgroundColor: '#3b82f6' }} />
             <div style={{ width: `${stats.totalEarned > 0 ? ((stats.totalPending - stats.earnedAwaitingPayout) / stats.totalEarned) * 100 : 0}%`, backgroundColor: '#f59e0b' }} />
           </div>
-          <div className="px-4 py-1.5 flex items-center gap-4 text-[9px]" style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--bg-card)' }}>
+          <div className="px-3 sm:px-4 py-1.5 flex items-center gap-2 sm:gap-4 text-[9px] overflow-x-auto" style={{ color: 'var(--text-tertiary)', backgroundColor: 'var(--bg-card)' }}>
             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#10b981' }} />Paid</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3b82f6' }} />Earned (next payout)</span>
             <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#f59e0b' }} />Pending completion</span>
@@ -196,8 +196,8 @@ export default function CommissionsPage() {
       </div>
 
       {/* Content — Two columns: Left = History, Right = Pending + By Customer */}
-      <div className="flex-1 overflow-y-auto px-6 py-4" style={{ scrollbarWidth: 'thin' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 py-4" style={{ scrollbarWidth: 'thin' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 sm:gap-5">
 
           {/* Left Column: Payment History (3 cols) */}
           <div className="lg:col-span-3 space-y-4">

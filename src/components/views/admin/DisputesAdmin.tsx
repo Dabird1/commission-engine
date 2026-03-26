@@ -111,14 +111,14 @@ export default function DisputesAdmin() {
   const resolvedCount = disputes.filter(d => d.status === 'resolved').length;
 
   return (
-    <div className="p-8 space-y-6">
+    <div className="p-3 sm:p-8 space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-[var(--text-primary)]">Disputes & Grievances</h1>
         <p className="text-sm text-[var(--text-secondary)] mt-1">{disputes.length} disputes total</p>
       </div>
 
       {/* Status Summary */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="rounded-lg border p-4" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="text-sm text-[var(--text-secondary)] font-medium uppercase">All Disputes</div>
           <div className="text-2xl font-bold text-[var(--text-primary)] mt-2">{disputes.length}</div>
@@ -138,12 +138,12 @@ export default function DisputesAdmin() {
       </div>
 
       {/* Filter Bar */}
-      <div className="rounded-lg border p-3 flex items-center gap-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
-        <Filter size={16} style={{ color: 'var(--text-secondary)' }} />
+      <div className="rounded-lg border p-3 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <Filter size={16} style={{ color: 'var(--text-secondary)', flexShrink: 0 }} />
         <select
           value={filterStatus}
           onChange={e => setFilterStatus(e.target.value)}
-          className="px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
+          className="w-full sm:w-auto px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
           style={{ borderColor: 'var(--border-primary)' }}
         >
           <option value="all">All Statuses</option>
@@ -154,7 +154,7 @@ export default function DisputesAdmin() {
         <select
           value={filterBrand}
           onChange={e => setFilterBrand(e.target.value)}
-          className="px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
+          className="w-full sm:w-auto px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
           style={{ borderColor: 'var(--border-primary)' }}
         >
           <option value="all">All Brands</option>
@@ -164,7 +164,7 @@ export default function DisputesAdmin() {
         <select
           value={filterDate}
           onChange={e => setFilterDate(e.target.value)}
-          className="px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
+          className="w-full sm:w-auto px-3 py-1.5 border rounded-lg text-sm bg-[var(--bg-secondary)] text-[var(--text-primary)] outline-none"
           style={{ borderColor: 'var(--border-primary)' }}
         >
           <option value="all">All Time</option>
@@ -225,7 +225,7 @@ export default function DisputesAdmin() {
 
       {/* Detail Panel */}
       {selectedDispute && (
-        <div className="rounded-lg border p-6 fixed bottom-6 right-6 w-96 max-h-[70vh] overflow-y-auto" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
+        <div className="rounded-lg border p-3 sm:p-6 fixed bottom-6 right-6 w-96 max-h-[70vh] overflow-y-auto" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)', boxShadow: '0 10px 30px rgba(0,0,0,0.2)' }}>
           <button
             onClick={() => setSelectedDispute(null)}
             className="absolute top-4 right-4 text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"

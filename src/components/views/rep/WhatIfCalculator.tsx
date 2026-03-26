@@ -56,14 +56,14 @@ export default function WhatIfCalculator() {
 
   return (
     <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
-      <div className="flex-shrink-0 px-6 pt-4 pb-2">
+      <div className="flex-shrink-0 px-3 sm:px-6 pt-4 pb-2">
         <h1 className="text-2xl font-black tracking-tight" style={{ color: 'var(--text-primary)' }}>What-If Calculator</h1>
         <p className="text-sm mt-0.5" style={{ color: 'var(--text-tertiary)' }}>Model scenarios to optimize your earnings</p>
       </div>
 
-      <div className="flex-1 overflow-y-auto px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
         {/* Quick Scenario Presets */}
-        <div className="flex items-center gap-2 mb-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-3 flex-wrap">
           <span className="text-[14px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Quick Start:</span>
           {PRESETS.map((p) => (
             <button key={p.label} onClick={() => { setDealSize(p.deal); setGpPercent(p.gp); setDealCount(1); }}
@@ -77,11 +77,11 @@ export default function WhatIfCalculator() {
           ))}
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
           {/* Left: Inputs */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {/* Deal Size Slider */}
-            <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            <div className="rounded-2xl border p-3 sm:p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
               <div className="flex items-center justify-between mb-2">
@@ -97,7 +97,7 @@ export default function WhatIfCalculator() {
             </div>
 
             {/* GP% Slider */}
-            <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            <div className="rounded-2xl border p-3 sm:p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
               <div className="flex items-center justify-between mb-2">
@@ -115,7 +115,7 @@ export default function WhatIfCalculator() {
             </div>
 
             {/* Deal Count */}
-            <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            <div className="rounded-2xl border p-3 sm:p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
               <div className="flex items-center justify-between mb-2">
@@ -143,7 +143,7 @@ export default function WhatIfCalculator() {
             </div>
 
             {/* Tier Visual */}
-            <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            <div className="rounded-2xl border p-3 sm:p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
               onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
               <div className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>
@@ -181,7 +181,7 @@ export default function WhatIfCalculator() {
           </div>
 
           {/* Right: Results */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {/* Main Result */}
             <div className="rounded-lg p-4 duration-300 transition-all" style={{ backgroundColor: 'rgba(59,130,246,0.06)', border: '1px solid rgba(59,130,246,0.2)' }}
               onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
@@ -200,7 +200,7 @@ export default function WhatIfCalculator() {
               </div>
 
               {/* Front/Back */}
-              <div className="grid grid-cols-2 gap-2 mt-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
                 <div className="rounded p-2" style={{ backgroundColor: 'var(--bg-card)' }}>
                   <div className="text-[14px] font-bold" style={{ color: 'var(--text-tertiary)' }}>Front-End</div>
                   <div className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{formatCurrency(calc.frontEnd)}</div>
@@ -258,7 +258,7 @@ export default function WhatIfCalculator() {
               <div className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--text-tertiary)' }}>
                 Your YTD Stats
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {[
                   { label: 'Earned', value: formatCurrency(currentUser.ytdEarnings) },
                   { label: 'Front Paid', value: formatCurrency(currentUser.ytdFrontPaid) },

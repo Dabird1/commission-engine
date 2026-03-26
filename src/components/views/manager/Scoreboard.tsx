@@ -121,8 +121,8 @@ export default function Scoreboard({ selectedBrand }: ScoreboardProps) {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: '12px',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: '8px',
               marginBottom: '12px',
             }}
           >

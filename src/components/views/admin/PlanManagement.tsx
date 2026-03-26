@@ -135,8 +135,8 @@ export default function PlanManagement() {
   };
 
   return (
-    <div className="p-8 space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="p-3 sm:p-8 space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-[var(--text-primary)]">Commission Plans</h1>
           <p className="text-sm text-[var(--text-secondary)] mt-1">{plans.length} plans configured</p>
@@ -220,7 +220,7 @@ export default function PlanManagement() {
                   {plan.type === 'tiered_percentage' && (
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Tier Structure</h4>
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {plan.tiers?.map((tier: any, idx: number) => (
                           <div key={idx} className="p-2 rounded" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }} className="border">
                             <div className="text-sm font-semibold text-[var(--text-secondary)]">{tier.label}</div>
@@ -235,7 +235,7 @@ export default function PlanManagement() {
                   )}
 
                   {plan.type === 'draw_against_commission' && (
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                       <div>
                         <div className="text-sm text-[var(--text-secondary)] font-medium">Monthly Draw</div>
                         <div className="text-lg font-bold text-[var(--text-primary)] mt-1">${plan.monthlyDraw?.toLocaleString()}</div>
@@ -252,7 +252,7 @@ export default function PlanManagement() {
                   )}
 
                   {plan.type === 'salary_plus_bonus' && (
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                       <div>
                         <div className="text-sm text-[var(--text-secondary)] font-medium">Base Salary</div>
                         <div className="text-lg font-bold text-[var(--text-primary)] mt-1">${plan.baseSalary?.toLocaleString()}</div>
@@ -287,7 +287,7 @@ export default function PlanManagement() {
             style={{ borderColor: 'var(--border-primary)' }}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b" style={{ borderColor: 'var(--border-primary)' }}>
+            <div className="flex items-center justify-between p-3 sm:p-6 border-b" style={{ borderColor: 'var(--border-primary)' }}>
               <h2 className="text-xl font-bold text-[var(--text-primary)]">Create New Plan</h2>
               <button
                 onClick={handleCloseModal}
@@ -298,7 +298,7 @@ export default function PlanManagement() {
             </div>
 
             {/* Modal Body */}
-            <div className="p-6 space-y-4">
+            <div className="p-3 sm:p-6 space-y-4">
               {/* Plan Name */}
               <div>
                 <label className="block text-sm font-semibold text-[var(--text-primary)] mb-2">
@@ -365,7 +365,7 @@ export default function PlanManagement() {
             </div>
 
             {/* Modal Footer */}
-            <div className="flex items-center gap-3 p-6 border-t" style={{ borderColor: 'var(--border-primary)' }}>
+            <div className="flex flex-col sm:flex-row items-center gap-3 p-3 sm:p-6 border-t" style={{ borderColor: 'var(--border-primary)' }}>
               <button
                 onClick={handleCloseModal}
                 className="flex-1 px-4 py-2 text-[var(--text-primary)] border border-[var(--border-primary)] rounded-lg font-semibold hover:bg-[var(--bg-secondary)] transition"

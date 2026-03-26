@@ -63,14 +63,14 @@ export default function AccrualForecast() {
   return (
     <div className="h-[calc(100vh-3.5rem)] overflow-hidden bg-[var(--bg-primary)] flex flex-col">
       {/* Header + Decision Hero */}
-      <div className="p-8 pb-0">
+      <div className="p-3 sm:p-8 pb-0">
         <div className="mb-6">
           <h1 className="text-[28px] font-bold text-[var(--text-primary)] mb-2">Accrual Forecast</h1>
           <p className="text-[14px] text-[var(--text-secondary)]">Commission accrual through period • Real-time sensitivity</p>
         </div>
 
         {/* Decision-First Hero: Big Number with Range Inline */}
-        <div className="bg-gradient-to-r from-[var(--accent-blue)] to-[var(--accent-blue)]/70 rounded-lg p-7 text-white mb-6">
+        <div className="bg-gradient-to-r from-[var(--accent-blue)] to-[var(--accent-blue)]/70 rounded-lg p-4 sm:p-7 text-white mb-6">
           <p className="text-[14px] text-white/75 mb-2 font-medium">Accrual to Book This Period</p>
           <div className="flex items-baseline gap-6 mb-3">
             <p className="text-[48px] font-bold">${(projectedCost / 1000).toFixed(1)}K</p>
@@ -86,10 +86,10 @@ export default function AccrualForecast() {
       </div>
 
       {/* Interactive Sensitivity + Insights Strip (Side by side, compact) */}
-      <div className="px-8 pb-6 space-y-4">
+      <div className="px-3 sm:px-8 pb-6 space-y-4">
         {/* Slider Control */}
-        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-5">
-          <div className="flex items-center gap-6">
+        <div className="bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-5">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6">
             <div className="flex-1">
               <div className="flex items-baseline justify-between mb-3">
                 <label className="text-[14px] font-semibold text-[var(--text-secondary)]">Close Rate</label>
@@ -124,7 +124,7 @@ export default function AccrualForecast() {
         </div>
 
         {/* Actionable Insights: Immediate Impact Statements */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           <div className="bg-[var(--accent-amber)]/10 border border-[var(--accent-amber)]/30 rounded-lg p-4">
             <p className="text-[14px] text-[var(--text-secondary)] font-medium mb-1">If close rate drops to 60%:</p>
             <p className="text-[16px] font-bold text-[var(--text-primary)]">${Math.abs((conservativeCost - projectedCost) / 1000).toFixed(1)}K</p>
@@ -140,9 +140,9 @@ export default function AccrualForecast() {
       </div>
 
       {/* Two-Column Layout: Chart + Table */}
-      <div className="flex-1 overflow-hidden px-8 pb-8 gap-6 flex">
+      <div className="flex-1 overflow-hidden px-3 sm:px-8 pb-8 gap-3 sm:gap-6 flex flex-col lg:flex-row">
         {/* Left: Compact 12-Month Trend */}
-        <div className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-5 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-5 overflow-hidden flex flex-col min-h-[300px]">
           <h2 className="text-[16px] font-semibold text-[var(--text-primary)] mb-4">Actual vs Projected Trend</h2>
           <div className="flex-1 overflow-hidden">
             <ResponsiveContainer width="100%" height="100%">
@@ -183,14 +183,14 @@ export default function AccrualForecast() {
         </div>
 
         {/* Right: Top 8 Brands by Cost */}
-        <div className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-5 overflow-hidden flex flex-col">
+        <div className="flex-1 bg-[var(--bg-card)] border border-[var(--border-primary)] rounded-lg p-3 sm:p-5 overflow-hidden flex flex-col min-h-[300px]">
           <h2 className="text-[16px] font-semibold text-[var(--text-primary)] mb-4">Top Brands by Accrual</h2>
           <div className="overflow-y-auto flex-1">
             <table className="w-full text-[14px]">
               <thead className="sticky top-0 bg-[var(--bg-secondary)] border-b border-[var(--border-primary)]">
                 <tr>
-                  <th className="text-left py-2 px-3 font-semibold text-[var(--text-secondary)]">Brand</th>
-                  <th className="text-right py-2 px-3 font-semibold text-[var(--text-secondary)]">Cost</th>
+                  <th className="text-left py-2 px-2 sm:px-3 font-semibold text-[var(--text-secondary)]">Brand</th>
+                  <th className="text-right py-2 px-2 sm:px-3 font-semibold text-[var(--text-secondary)]">Cost</th>
                 </tr>
               </thead>
               <tbody>
@@ -199,10 +199,10 @@ export default function AccrualForecast() {
                     key={idx}
                     className="border-b border-[var(--border-subtle)] hover:bg-[var(--bg-secondary)] transition"
                   >
-                    <td className="py-2 px-3 text-[var(--text-primary)] font-medium truncate">
+                    <td className="py-2 px-2 sm:px-3 text-[var(--text-primary)] font-medium truncate">
                       {row.brandName}
                     </td>
-                    <td className="py-2 px-3 text-right text-[var(--text-primary)] font-mono font-semibold">
+                    <td className="py-2 px-2 sm:px-3 text-right text-[var(--text-primary)] font-mono font-semibold">
                       ${(row.estimatedCost / 1000).toFixed(1)}K
                     </td>
                   </tr>
@@ -211,7 +211,7 @@ export default function AccrualForecast() {
             </table>
           </div>
           <div className="border-t border-[var(--border-primary)] pt-3 mt-3">
-            <div className="flex justify-between items-center px-3 font-bold text-[var(--text-primary)]">
+            <div className="flex justify-between items-center px-2 sm:px-3 font-bold text-[var(--text-primary)]">
               <span>Total (Top 8)</span>
               <span className="font-mono">${(totalEstimatedCost / 1000).toFixed(1)}K</span>
             </div>

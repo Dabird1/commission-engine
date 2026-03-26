@@ -53,9 +53,9 @@ export default function Acknowledgments() {
       </div>
 
       {/* Status Strip - 3 Big Cards */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-6">
         {/* Acknowledged */}
-        <div className="rounded-lg border p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="relative w-20 h-20 mb-4">
             <svg className="w-full h-full" style={{ transform: 'rotate(-90deg)' }}>
               <circle cx="40" cy="40" r="36" fill="none" stroke="var(--bg-secondary)" strokeWidth="3" />
@@ -75,7 +75,7 @@ export default function Acknowledgments() {
         </div>
 
         {/* Pending */}
-        <div className="rounded-lg border p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="relative w-20 h-20 mb-4 flex items-center justify-center rounded-full" style={{ backgroundColor: 'var(--bg-secondary)' }}>
             <Clock size={28} style={{ color: 'var(--accent-amber)' }} />
           </div>
@@ -85,7 +85,7 @@ export default function Acknowledgments() {
         </div>
 
         {/* Overdue */}
-        <div className="rounded-lg border p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+        <div className="rounded-lg border p-3 sm:p-6 flex flex-col items-center text-center" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
           <div className="relative w-20 h-20 mb-4 flex items-center justify-center rounded-full" style={{ backgroundColor: 'var(--bg-secondary)' }}>
             <AlertTriangle size={28} style={{ color: 'var(--accent-red)' }} />
           </div>
@@ -96,7 +96,7 @@ export default function Acknowledgments() {
       </div>
 
       {/* Two-Column Split */}
-      <div className="flex gap-6 flex-1 min-h-0">
+      <div className="flex flex-col lg:flex-row gap-3 sm:gap-6 flex-1 min-h-0">
         {/* Left Panel - Action Required List (60%) */}
         <div className="flex-1 flex flex-col">
           <h2 className="text-[18px] font-bold text-[var(--text-primary)] mb-3">Action Required</h2>
@@ -146,9 +146,9 @@ export default function Acknowledgments() {
         </div>
 
         {/* Right Panel - Quick Preview (40%) */}
-        <div className="w-2/5 flex flex-col">
+        <div className="w-full lg:w-2/5 flex flex-col">
           <h2 className="text-[18px] font-bold text-[var(--text-primary)] mb-3">Rep Preview</h2>
-          <div className="rounded-lg border p-6 flex-1 flex flex-col" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
+          <div className="rounded-lg border p-3 sm:p-6 flex-1 flex flex-col" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)' }}>
             <div className="mb-5">
               <div className="text-sm text-[var(--text-secondary)] font-semibold uppercase tracking-wide">Plan Name</div>
               <div className="text-[18px] font-bold text-[var(--text-primary)] mt-1">{planPreview.planName}</div>

@@ -220,7 +220,7 @@ export default function LeaderboardPage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
       {/* Header */}
-      <div className="flex-shrink-0 px-6 pt-3 pb-2">
+      <div className="flex-shrink-0 px-3 sm:px-6 pt-3 pb-2">
         {/* My Position Sticky Bar */}
         {myEntry && (
           <div className="rounded-2xl p-3 mb-2.5"
@@ -295,7 +295,7 @@ export default function LeaderboardPage() {
         )}
 
         {/* Period + Category + Filters */}
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <div className="flex gap-1 rounded-lg p-0.5" style={{ backgroundColor: 'var(--bg-secondary)' }}>
               {(['mtd', 'qtd', 'ytd'] as Period[]).map(p => (
@@ -374,7 +374,7 @@ export default function LeaderboardPage() {
         {/* Filter Dropdown */}
         {showFilters && (
           <div className="mt-2 p-3 rounded-xl border" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)', boxShadow: 'var(--shadow-lg)' }}>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="text-[14px] font-bold uppercase tracking-wider mb-1.5 block" style={{ color: 'var(--text-tertiary)' }}>
                   <Building2 size={10} className="inline mr-1" style={{ verticalAlign: '-1px' }} />
@@ -421,10 +421,10 @@ export default function LeaderboardPage() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
+      <div className="flex-1 overflow-y-auto px-3 sm:px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
         {/* Podium - Top 3 */}
         {topThree.length >= 3 && (
-          <div className="grid grid-cols-3 gap-3 mb-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-3">
             {topThree.map((rep: any, idx: number) => {
               const medals = ['🥇', '🥈', '🥉'];
               const medalBg = [
@@ -451,7 +451,7 @@ export default function LeaderboardPage() {
                     <span className="inline-block w-1 h-1 rounded-full" style={{ backgroundColor: tierColors[rep.tier] || '#94a3b8' }} />
                     <span className="uppercase text-[8px] font-bold" style={{ color: tierColors[rep.tier] || '#94a3b8' }}>{rep.tier}</span>
                   </div>
-                  <div className="mt-2 grid grid-cols-3 gap-1">
+                  <div className="mt-2 grid grid-cols-3 gap-1 sm:gap-1">
                     <div>
                       <div className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{rep.deals}</div>
                       <div className="text-[9px]" style={{ color: 'var(--text-tertiary)' }}>Deals</div>
@@ -477,8 +477,8 @@ export default function LeaderboardPage() {
         )}
 
         {/* Rankings Table */}
-        <div className="rounded-2xl border overflow-hidden mb-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-          <div className="px-4 py-2 border-b flex items-center justify-between" style={{ borderColor: 'var(--border-subtle)' }}>
+        <div className="rounded-2xl border overflow-x-auto mb-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
+          <div className="px-3 sm:px-4 py-2 border-b flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-0" style={{ borderColor: 'var(--border-subtle)' }}>
             <span className="text-sm font-bold tracking-[0.12em]" style={{ color: 'var(--text-tertiary)' }}>FULL RANKINGS</span>
             <span className="text-[14px]" style={{ color: 'var(--text-tertiary)' }}>
               Showing {Math.min(showCount, sorted.length)} of {sorted.length}
@@ -491,7 +491,7 @@ export default function LeaderboardPage() {
 
             return (
               <div key={rep.id}
-                className="flex items-center gap-3 px-4 py-2 border-b transition-colors duration-200"
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 px-3 sm:px-4 py-2 border-b transition-colors duration-200"
                 style={{
                   borderColor: 'var(--border-primary)',
                   backgroundColor: isMe ? 'rgba(59,130,246,0.06)' : 'transparent',
@@ -564,14 +564,14 @@ export default function LeaderboardPage() {
 
         {/* Achievements */}
         <div className="rounded-2xl border p-3" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}>
-          <div className="flex items-center gap-2 mb-2.5">
+          <div className="flex items-center gap-2 mb-2.5 flex-wrap">
             <Award size={14} style={{ color: 'var(--accent-blue)' }} />
             <span className="text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>Achievements</span>
             <span className="text-[14px] font-bold px-1.5 py-0.5 rounded" style={{ backgroundColor: 'var(--accent-blue-light)', color: 'var(--accent-blue)' }}>
               {unlockedAchievements.length}/{(achievements || []).length}
             </span>
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {unlockedAchievements.map((a: any) => (
               <div key={a.id} className="flex items-center gap-2 p-2 rounded-lg transition-all duration-200 hover:shadow-md"
                 style={{ backgroundColor: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)' }}>
