@@ -47,6 +47,11 @@ const viewTitles: Record<string, string> = {
   accrual: 'Accrual Forecast',
   reconciliation: 'Reconciliation',
   'audit-trail': 'Audit Trail',
+  'pm-dashboard': 'Dashboard',
+  'job-tracker': 'Job Tracker',
+  'variable-pay': 'Variable Pay',
+  'quality-metrics': 'Quality & Efficiency',
+  'pm-leaderboard': 'Leaderboard',
 };
 
 // Group brands by region for the dropdown
@@ -122,6 +127,12 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
       { id: 'f2', title: 'Payroll Ready', body: '4 brands ready to push — $47.3K total', read: false },
       { id: 'f3', title: 'Acumatica Pending', body: 'ERP integration awaiting setup — sync not started', read: false },
       { id: 'f4', title: 'Accrual Forecast', body: 'Next period projected: $52.4K at 80% close rate', read: true },
+    ],
+    production_pm: [
+      { id: 'p1', title: 'Callback Deduction', body: 'J-1037 Oakwood Estates — $120 deducted (margin dropped to 28%)', read: false },
+      { id: 'p2', title: 'SPIF Milestone Hit', body: '15-job milestone reached — $250 bonus earned', read: false },
+      { id: 'p3', title: 'Payout Scheduled', body: '$2,805 variable pay payout scheduled for March 16', read: false },
+      { id: 'p4', title: 'Quality Score Update', body: 'Your quality score is 94 — efficiency bonus qualified', read: true },
     ],
   };
   const activeNotifications = roleNotifications[currentRole] || roleNotifications.rep;
@@ -304,7 +315,7 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
               <div className="px-4 py-3 border-b flex items-center justify-between" style={{ borderColor: 'var(--border-primary)' }}>
                 <span className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>Settings</span>
                 <span className="text-[10px] font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-tertiary)' }}>
-                  {currentRole === 'rep' ? 'Sales Rep' : currentRole === 'manager' ? 'Manager' : currentRole === 'rvp' ? 'Regional VP' : currentRole === 'csuite' ? 'C-Suite' : currentRole === 'hr_admin' ? 'HR / Comp Admin' : 'Finance'}
+                  {currentRole === 'rep' ? 'Sales Rep' : currentRole === 'manager' ? 'Manager' : currentRole === 'rvp' ? 'Regional VP' : currentRole === 'csuite' ? 'C-Suite' : currentRole === 'hr_admin' ? 'HR / Comp Admin' : currentRole === 'production_pm' ? 'Production PM' : 'Finance'}
                 </span>
               </div>
 
@@ -563,6 +574,39 @@ export default function Header({ currentRole, activeView, selectedBrand, onBrand
                           <span className="text-xs" style={{ color: 'var(--text-primary)' }}>Accrual close rate default</span>
                         </div>
                         <span className="text-[10px] font-semibold px-2 py-0.5 rounded" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>80%</span>
+                      </label>
+                    </div>
+                  </div>
+                )}
+
+                {currentRole === 'production_pm' && (
+                  <div className="px-4 py-3">
+                    <p className="text-[9px] font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--text-tertiary)' }}>Production Settings</p>
+                    <div className="space-y-2">
+                      <label className="flex items-center justify-between cursor-pointer">
+                        <div className="flex items-center gap-2">
+                          <DollarSign size={13} style={{ color: 'var(--text-secondary)' }} />
+                          <span className="text-xs" style={{ color: 'var(--text-primary)' }}>Show pay impact per job</span>
+                        </div>
+                        <div className="w-8 h-[18px] rounded-full relative cursor-pointer" style={{ backgroundColor: 'var(--accent-blue)' }}>
+                          <div className="w-3.5 h-3.5 rounded-full bg-white absolute top-[2px]" style={{ left: '16px' }} />
+                        </div>
+                      </label>
+                      <label className="flex items-center justify-between cursor-pointer">
+                        <div className="flex items-center gap-2">
+                          <Shield size={13} style={{ color: 'var(--text-secondary)' }} />
+                          <span className="text-xs" style={{ color: 'var(--text-primary)' }}>Callback alert threshold</span>
+                        </div>
+                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded" style={{ backgroundColor: 'var(--bg-secondary)', color: 'var(--text-primary)' }}>30 days</span>
+                      </label>
+                      <label className="flex items-center justify-between cursor-pointer">
+                        <div className="flex items-center gap-2">
+                          <BarChart3 size={13} style={{ color: 'var(--text-secondary)' }} />
+                          <span className="text-xs" style={{ color: 'var(--text-primary)' }}>Show leaderboard rank</span>
+                        </div>
+                        <div className="w-8 h-[18px] rounded-full relative cursor-pointer" style={{ backgroundColor: 'var(--accent-blue)' }}>
+                          <div className="w-3.5 h-3.5 rounded-full bg-white absolute top-[2px]" style={{ left: '16px' }} />
+                        </div>
                       </label>
                     </div>
                   </div>

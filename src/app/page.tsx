@@ -48,6 +48,13 @@ import AccrualForecast from '@/components/views/finance/AccrualForecast';
 import Reconciliation from '@/components/views/finance/Reconciliation';
 import AuditTrail from '@/components/views/finance/AuditTrail';
 
+// Production PM views
+import PMDashboard from '@/components/views/production/PMDashboard';
+import JobTracker from '@/components/views/production/JobTracker';
+import VariablePay from '@/components/views/production/VariablePay';
+import QualityMetrics from '@/components/views/production/QualityMetrics';
+import PMLeaderboard from '@/components/views/production/PMLeaderboard';
+
 // Shared
 import ChatWithHR from '@/components/shared/ChatWithHR';
 import AICopilot from '@/components/shared/AICopilot';
@@ -102,6 +109,12 @@ export default function Home() {
       case 'accrual': return <AccrualForecast />;
       case 'reconciliation': return <Reconciliation />;
       case 'audit-trail': return <AuditTrail />;
+      // Production PM
+      case 'pm-dashboard': return <PMDashboard />;
+      case 'job-tracker': return <JobTracker />;
+      case 'variable-pay': return <VariablePay />;
+      case 'quality-metrics': return <QualityMetrics />;
+      case 'pm-leaderboard': return <PMLeaderboard />;
       default: return <RepDashboard />;
     }
   };

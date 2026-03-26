@@ -1,4 +1,4 @@
-export type UserRole = 'rep' | 'manager' | 'rvp' | 'csuite' | 'hr_admin' | 'finance';
+export type UserRole = 'rep' | 'manager' | 'rvp' | 'csuite' | 'hr_admin' | 'finance' | 'production_pm';
 
 export type DealStage = 'sold' | 'in_progress' | 'complete' | 'paid' | 'cancelled';
 export type PlanModel = 'gp_tiered' | 'draw_against' | 'salary_bonus' | 'per_job' | 'revenue_share';

@@ -6,7 +6,8 @@ import {
   Users, TrendingUp, CheckSquare, PieChart, Building2, GitCompare,
   Brain, BarChart3, Settings, Shield, Clock, Search, FileCheck,
   Wallet, LineChart, RefreshCw, ClipboardList, Award, MessageSquare,
-  Zap, UserPlus, Sun, Moon, ChevronDown, Home, X
+  Zap, UserPlus, Sun, Moon, ChevronDown, Home, X, HardHat, Hammer,
+  Star, Target
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { UserRole } from '@/types/commission';
@@ -61,10 +62,18 @@ const roleNavItems: Record<UserRole, NavItem[]> = {
     { id: 'reconciliation', label: 'Reconciliation', icon: <RefreshCw size={16} strokeWidth={1.8} /> },
     { id: 'audit-trail', label: 'Audit Trail', icon: <ClipboardList size={16} strokeWidth={1.8} /> },
   ],
+  production_pm: [
+    { id: 'pm-dashboard', label: 'Dashboard', icon: <LayoutDashboard size={16} strokeWidth={1.8} /> },
+    { id: 'job-tracker', label: 'Job Tracker', icon: <Hammer size={16} strokeWidth={1.8} /> },
+    { id: 'variable-pay', label: 'Variable Pay', icon: <DollarSign size={16} strokeWidth={1.8} /> },
+    { id: 'quality-metrics', label: 'Quality & Efficiency', icon: <Star size={16} strokeWidth={1.8} /> },
+    { id: 'pm-leaderboard', label: 'Leaderboard', icon: <Trophy size={16} strokeWidth={1.8} /> },
+  ],
 };
 
 const roleLabels: Record<UserRole, string> = {
   rep: 'Sales Rep',
+  production_pm: 'Production PM',
   manager: 'Manager',
   rvp: 'Regional VP',
   csuite: 'C-Suite',
