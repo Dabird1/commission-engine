@@ -16,10 +16,10 @@ import HandbookPage from '@/components/views/rep/HandbookPage';
 import DisputeFlow from '@/components/views/rep/DisputeFlow';
 
 // Manager views
-import TeamOverview from '@/components/views/manager/TeamOverview';
-import TeamPerformance from '@/components/views/manager/TeamPerformance';
+import Scoreboard from '@/components/views/manager/Scoreboard';
+import Coaching from '@/components/views/manager/Coaching';
 import Approvals from '@/components/views/manager/Approvals';
-import CostAnalysis from '@/components/views/manager/CostAnalysis';
+import ThePnL from '@/components/views/manager/ThePnL';
 
 // RVP views
 import MultiBrandOverview from '@/components/views/rvp/MultiBrandOverview';
@@ -48,6 +48,10 @@ import AccrualForecast from '@/components/views/finance/AccrualForecast';
 import Reconciliation from '@/components/views/finance/Reconciliation';
 import AuditTrail from '@/components/views/finance/AuditTrail';
 
+// Shared
+import ChatWithHR from '@/components/shared/ChatWithHR';
+import AICopilot from '@/components/shared/AICopilot';
+
 export default function Home() {
   const [currentRole, setCurrentRole] = useState<UserRole>('rep');
   const [activeView, setActiveView] = useState('dashboard');
@@ -70,12 +74,12 @@ export default function Home() {
       case 'handbook': return <HandbookPage />;
       case 'disputes': return <DisputeFlow />;
       // Manager
-      case 'team-overview': return <TeamOverview />;
-      case 'performance': return <TeamPerformance />;
-      case 'approvals': return <Approvals />;
-      case 'cost-analysis': return <CostAnalysis />;
+      case 'scoreboard': return <Scoreboard selectedBrand={selectedBrand} />;
+      case 'coaching': return <Coaching selectedBrand={selectedBrand} />;
+      case 'approvals': return <Approvals selectedBrand={selectedBrand} />;
+      case 'the-pnl': return <ThePnL selectedBrand={selectedBrand} />;
       // RVP
-      case 'multi-brand': return <MultiBrandOverview />;
+      case 'multi-brand': return <MultiBrandOverview selectedBrand={selectedBrand} />;
       case 'brand-comparison': return <BrandComparison />;
       case 'modeling': return <ScenarioModeling />;
       // C-Suite
@@ -117,11 +121,15 @@ export default function Home() {
           activeView={activeView}
           selectedBrand={selectedBrand}
           onBrandChange={setSelectedBrand}
+          isDark={isDark}
+          onThemeToggle={() => setIsDark(!isDark)}
         />
-        <main className="flex-1 p-6" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <main className="flex-1" style={{ backgroundColor: 'var(--bg-secondary)' }}>
           {renderView()}
         </main>
       </div>
+      {currentRole === 'rep' && <ChatWithHR />}
+      <AICopilot activeView={activeView} currentRole={currentRole} />
     </div>
   );
 }

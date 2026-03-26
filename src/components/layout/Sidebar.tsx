@@ -19,47 +19,47 @@ interface NavItem {
 
 const roleNavItems: Record<UserRole, NavItem[]> = {
   rep: [
-    { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={18} /> },
-    { id: 'deals', label: 'Deals', icon: <FileText size={18} /> },
-    { id: 'commissions', label: 'Commissions', icon: <DollarSign size={18} /> },
-    { id: 'leaderboard', label: 'Leaderboard', icon: <Trophy size={18} /> },
-    { id: 'calculator', label: 'What-If Calculator', icon: <Calculator size={18} /> },
-    { id: 'my-plan', label: 'My Plan', icon: <BookOpen size={18} /> },
-    { id: 'handbook', label: 'Handbook', icon: <FileCheck size={18} /> },
-    { id: 'disputes', label: 'My Disputes', icon: <MessageSquare size={18} /> },
+    { id: 'dashboard', label: 'Dashboard', icon: <LayoutDashboard size={16} strokeWidth={1.8} /> },
+    { id: 'deals', label: 'Deals', icon: <FileText size={16} strokeWidth={1.8} /> },
+    { id: 'commissions', label: 'Commissions', icon: <DollarSign size={16} strokeWidth={1.8} /> },
+    { id: 'leaderboard', label: 'Leaderboard', icon: <Trophy size={16} strokeWidth={1.8} /> },
+    { id: 'calculator', label: 'What-If Calculator', icon: <Calculator size={16} strokeWidth={1.8} /> },
+    { id: 'my-plan', label: 'My Plan', icon: <BookOpen size={16} strokeWidth={1.8} /> },
+    { id: 'handbook', label: 'Handbook', icon: <FileCheck size={16} strokeWidth={1.8} /> },
+    { id: 'disputes', label: 'My Disputes', icon: <MessageSquare size={16} strokeWidth={1.8} /> },
   ],
   manager: [
-    { id: 'team-overview', label: 'Team Overview', icon: <Users size={18} /> },
-    { id: 'performance', label: 'Performance', icon: <TrendingUp size={18} /> },
-    { id: 'approvals', label: 'Approvals', icon: <CheckSquare size={18} /> },
-    { id: 'cost-analysis', label: 'Cost Analysis', icon: <PieChart size={18} /> },
+    { id: 'scoreboard', label: 'Scoreboard', icon: <LayoutDashboard size={16} strokeWidth={1.8} /> },
+    { id: 'coaching', label: 'Coaching', icon: <Users size={16} strokeWidth={1.8} /> },
+    { id: 'approvals', label: 'Approvals', icon: <CheckSquare size={16} strokeWidth={1.8} /> },
+    { id: 'the-pnl', label: 'The P&L', icon: <BarChart3 size={16} strokeWidth={1.8} /> },
   ],
   rvp: [
-    { id: 'multi-brand', label: 'Multi-Brand Overview', icon: <Building2 size={18} /> },
-    { id: 'brand-comparison', label: 'Brand Comparison', icon: <GitCompare size={18} /> },
-    { id: 'modeling', label: 'Scenario Modeling', icon: <Brain size={18} /> },
+    { id: 'multi-brand', label: 'Multi-Brand Overview', icon: <Building2 size={16} strokeWidth={1.8} /> },
+    { id: 'brand-comparison', label: 'Brand Comparison', icon: <GitCompare size={16} strokeWidth={1.8} /> },
+    { id: 'modeling', label: 'Scenario Modeling', icon: <Brain size={16} strokeWidth={1.8} /> },
   ],
   csuite: [
-    { id: 'portfolio', label: 'Portfolio Analytics', icon: <BarChart3 size={18} /> },
-    { id: 'cost-trends', label: 'Cost Trends', icon: <LineChart size={18} /> },
-    { id: 'ma-readiness', label: 'M&A Readiness', icon: <Zap size={18} /> },
+    { id: 'portfolio', label: 'Portfolio Analytics', icon: <BarChart3 size={16} strokeWidth={1.8} /> },
+    { id: 'cost-trends', label: 'Cost Trends', icon: <LineChart size={16} strokeWidth={1.8} /> },
+    { id: 'ma-readiness', label: 'M&A Readiness', icon: <Zap size={16} strokeWidth={1.8} /> },
   ],
   hr_admin: [
-    { id: 'plan-management', label: 'Plan Management', icon: <Settings size={18} /> },
-    { id: 'acknowledgments', label: 'Acknowledgments', icon: <FileCheck size={18} /> },
-    { id: 'disputes-admin', label: 'Disputes', icon: <MessageSquare size={18} /> },
-    { id: 'exceptions', label: 'Exceptions', icon: <Shield size={18} /> },
-    { id: 'spif-builder', label: 'SPIF Builder', icon: <Award size={18} /> },
-    { id: 'split-config', label: 'Split Deals', icon: <GitCompare size={18} /> },
-    { id: 'brand-onboarding', label: 'Brand Onboarding', icon: <UserPlus size={18} /> },
-    { id: 'handbook-editor', label: 'Handbook Editor', icon: <BookOpen size={18} /> },
-    { id: 'audit-log', label: 'Audit Log', icon: <ClipboardList size={18} /> },
+    { id: 'plan-management', label: 'Plan Management', icon: <Settings size={16} strokeWidth={1.8} /> },
+    { id: 'acknowledgments', label: 'Acknowledgments', icon: <FileCheck size={16} strokeWidth={1.8} /> },
+    { id: 'disputes-admin', label: 'Disputes', icon: <MessageSquare size={16} strokeWidth={1.8} /> },
+    { id: 'exceptions', label: 'Exceptions', icon: <Shield size={16} strokeWidth={1.8} /> },
+    { id: 'spif-builder', label: 'SPIF Builder', icon: <Award size={16} strokeWidth={1.8} /> },
+    { id: 'split-config', label: 'Split Deals', icon: <GitCompare size={16} strokeWidth={1.8} /> },
+    { id: 'brand-onboarding', label: 'Brand Onboarding', icon: <UserPlus size={16} strokeWidth={1.8} /> },
+    { id: 'handbook-editor', label: 'Handbook Editor', icon: <BookOpen size={16} strokeWidth={1.8} /> },
+    { id: 'audit-log', label: 'Audit Log', icon: <ClipboardList size={16} strokeWidth={1.8} /> },
   ],
   finance: [
-    { id: 'payroll', label: 'Payroll Status', icon: <Wallet size={18} /> },
-    { id: 'accrual', label: 'Accrual Forecast', icon: <LineChart size={18} /> },
-    { id: 'reconciliation', label: 'Reconciliation', icon: <RefreshCw size={18} /> },
-    { id: 'audit-trail', label: 'Audit Trail', icon: <ClipboardList size={18} /> },
+    { id: 'payroll', label: 'Payroll Status', icon: <Wallet size={16} strokeWidth={1.8} /> },
+    { id: 'accrual', label: 'Accrual Forecast', icon: <LineChart size={16} strokeWidth={1.8} /> },
+    { id: 'reconciliation', label: 'Reconciliation', icon: <RefreshCw size={16} strokeWidth={1.8} /> },
+    { id: 'audit-trail', label: 'Audit Trail', icon: <ClipboardList size={16} strokeWidth={1.8} /> },
   ],
 };
 
@@ -86,45 +86,59 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
   const navItems = roleNavItems[currentRole];
 
   return (
-    <aside className="fixed left-0 top-0 bottom-0 w-[260px] flex flex-col border-r"
-      style={{ backgroundColor: 'var(--bg-sidebar)', borderColor: 'var(--border-primary)' }}>
+    <aside
+      className="fixed left-0 top-0 bottom-0 w-[260px] flex flex-col"
+      style={{ backgroundColor: 'var(--sidebar-bg)' }}
+    >
       {/* Logo */}
-      <div className="px-5 py-5 border-b" style={{ borderColor: 'var(--border-primary)' }}>
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm"
-            style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}>
+      <div className="px-5 pt-5 pb-4">
+        <div className="flex items-center gap-3">
+          <div
+            className="w-9 h-9 rounded-xl flex items-center justify-center font-black text-[10px] tracking-widest"
+            style={{ background: 'linear-gradient(135deg, #3b82f6, #2563eb)', color: 'white', boxShadow: '0 0 20px rgba(59,130,246,0.3)' }}
+          >
             IHS
           </div>
           <div>
-            <div className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>INFINITY</div>
-            <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Commission Engine</div>
+            <div className="text-[13px] font-bold tracking-[0.08em] text-white">INFINITY</div>
+            <div className="text-[10px] font-medium text-slate-500">Commission Engine</div>
           </div>
         </div>
       </div>
 
       {/* Role Switcher */}
-      <div className="px-3 py-3">
+      <div className="px-3 pb-3">
         <div className="relative">
           <button
             onClick={() => setRoleOpen(!roleOpen)}
-            className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm font-medium"
-            style={{ backgroundColor: 'var(--bg-hover)', color: 'var(--text-primary)' }}>
+            className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-[13px] font-semibold transition-all"
+            style={{ backgroundColor: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.85)', border: '1px solid rgba(255,255,255,0.08)' }}
+          >
             <span>{roleLabels[currentRole]}</span>
-            <ChevronDown size={14} className={cn("transition-transform", roleOpen && "rotate-180")} />
+            <ChevronDown
+              size={13}
+              className={cn("transition-transform", roleOpen && "rotate-180")}
+              style={{ color: 'rgba(255,255,255,0.4)' }}
+            />
           </button>
           {roleOpen && (
-            <div className="absolute top-full left-0 right-0 mt-1 rounded-lg border overflow-hidden z-50"
-              style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-primary)', boxShadow: 'var(--shadow-lg)' }}>
+            <div
+              className="absolute top-full left-0 right-0 mt-1.5 rounded-xl overflow-hidden z-50 animate-slide-down"
+              style={{ backgroundColor: '#1e4276', border: '1px solid rgba(255,255,255,0.12)', boxShadow: 'var(--shadow-dropdown)' }}
+            >
               {(Object.keys(roleLabels) as UserRole[]).map((role) => (
-                <button key={role}
+                <button
+                  key={role}
                   onClick={() => { onRoleChange(role); setRoleOpen(false); onViewChange(roleNavItems[role][0].id); }}
-                  className={cn("w-full text-left px-3 py-2 text-sm", role === currentRole && "font-semibold")}
+                  className="w-full text-left px-4 py-2.5 text-[13px] transition-colors"
                   style={{
-                    color: role === currentRole ? 'var(--accent-blue)' : 'var(--text-primary)',
-                    backgroundColor: role === currentRole ? 'var(--accent-blue-light)' : 'transparent',
+                    color: role === currentRole ? '#3b82f6' : 'rgba(255,255,255,0.7)',
+                    backgroundColor: role === currentRole ? 'rgba(59,130,246,0.1)' : 'transparent',
+                    fontWeight: role === currentRole ? 600 : 400,
                   }}
-                  onMouseEnter={(e) => { if (role !== currentRole) e.currentTarget.style.backgroundColor = 'var(--bg-hover)'; }}
-                  onMouseLeave={(e) => { if (role !== currentRole) e.currentTarget.style.backgroundColor = 'transparent'; }}>
+                  onMouseEnter={(e) => { if (role !== currentRole) e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.05)'; }}
+                  onMouseLeave={(e) => { if (role !== currentRole) e.currentTarget.style.backgroundColor = 'transparent'; }}
+                >
                   {roleLabels[role]}
                 </button>
               ))}
@@ -133,45 +147,71 @@ export default function Sidebar({ currentRole, onRoleChange, activeView, onViewC
         </div>
       </div>
 
+      {/* Divider */}
+      <div className="mx-5 mb-2" style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.06)' }} />
+
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-1 overflow-y-auto">
+      <nav className="flex-1 px-3 py-1 overflow-y-auto" style={{ scrollbarWidth: 'thin' }}>
         <div className="space-y-0.5">
-          {navItems.map((item) => (
-            <button key={item.id}
-              onClick={() => onViewChange(item.id)}
-              className={cn("w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors")}
-              style={{
-                color: activeView === item.id ? 'var(--accent-blue)' : 'var(--text-secondary)',
-                backgroundColor: activeView === item.id ? 'var(--accent-blue-light)' : 'transparent',
-                fontWeight: activeView === item.id ? 600 : 400,
-              }}
-              onMouseEnter={(e) => { if (activeView !== item.id) e.currentTarget.style.backgroundColor = 'var(--bg-hover)'; }}
-              onMouseLeave={(e) => { if (activeView !== item.id) e.currentTarget.style.backgroundColor = activeView === item.id ? 'var(--accent-blue-light)' : 'transparent'; }}>
-              {item.icon}
-              {item.label}
-            </button>
-          ))}
+          {navItems.map((item, idx) => {
+            const isActive = activeView === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => onViewChange(item.id)}
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] transition-all relative animate-fade-up stagger-${idx + 1}`}
+                style={{
+                  color: isActive ? '#ffffff' : 'var(--sidebar-text)',
+                  backgroundColor: isActive ? 'var(--sidebar-active)' : 'transparent',
+                  fontWeight: isActive ? 600 : 400,
+                }}
+                onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.backgroundColor = 'var(--sidebar-hover)'; }}
+                onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.backgroundColor = isActive ? 'var(--sidebar-active)' : 'transparent'; }}
+              >
+                {isActive && (
+                  <div
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 rounded-r-full"
+                    style={{ backgroundColor: 'var(--sidebar-indicator)' }}
+                  />
+                )}
+                <span style={{ color: isActive ? '#3b82f6' : 'var(--sidebar-text)' }}>{item.icon}</span>
+                {item.label}
+              </button>
+            );
+          })}
         </div>
       </nav>
 
+      {/* IHS Purpose Strip */}
+      <div className="mx-3 mb-2 px-3.5 py-2.5 rounded-lg" style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+        <p className="text-[8px] font-bold uppercase tracking-[0.15em] text-blue-400/50 mb-0.5">Our Purpose</p>
+        <p className="text-[10.5px] font-medium text-slate-400 leading-snug italic">
+          &ldquo;Saving our communities from unscrupulous contractors&rdquo;
+        </p>
+      </div>
+
       {/* Bottom: Theme + User */}
-      <div className="px-3 py-3 border-t space-y-2" style={{ borderColor: 'var(--border-primary)' }}>
-        <button onClick={onThemeToggle}
-          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm"
-          style={{ color: 'var(--text-secondary)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--bg-hover)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}>
-          {isDark ? <Sun size={18} /> : <Moon size={18} />}
+      <div className="px-3 py-3 space-y-1" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <button
+          onClick={onThemeToggle}
+          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] transition-all"
+          style={{ color: 'var(--sidebar-text)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--sidebar-hover)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+        >
+          {isDark ? <Sun size={16} strokeWidth={1.8} /> : <Moon size={16} strokeWidth={1.8} />}
           {isDark ? 'Light Mode' : 'Dark Mode'}
         </button>
         <div className="flex items-center gap-3 px-3 py-2">
-          <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
-            style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}>
+          <div
+            className="w-8 h-8 rounded-full flex items-center justify-center text-[10px] font-bold text-white"
+            style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)', boxShadow: '0 0 0 2px rgba(59,130,246,0.3)' }}
+          >
             AB
           </div>
           <div>
-            <div className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>Aaron Bagurdes</div>
-            <div className="text-xs" style={{ color: 'var(--text-tertiary)' }}>Apex Roofing</div>
+            <div className="text-[13px] font-semibold text-white/90">Aaron Bagurdes</div>
+            <div className="text-[10px] text-slate-500">Infinity Exteriors</div>
           </div>
         </div>
       </div>

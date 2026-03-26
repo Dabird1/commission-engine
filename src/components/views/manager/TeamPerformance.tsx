@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { teamMembers } from '@/data/sample-data';
 import { formatCurrency } from '@/lib/utils';
 import { ChevronDown, ChevronUp } from 'lucide-react'
@@ -93,7 +93,7 @@ export default function TeamPerformance() {
             </thead>
             <tbody>
               {teamData.map((rep) => (
-                <div key={rep.id}>
+                <React.Fragment key={rep.id}>
                   <tr
                     className="border-b border-[var(--border-color)] hover:bg-[var(--bg-tertiary)] cursor-pointer"
                     onClick={() =>
@@ -103,7 +103,7 @@ export default function TeamPerformance() {
                     <td className="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{rep.name}</td>
                     <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.jobsCount}</td>
                     <td className="px-6 py-4 text-right text-sm font-semibold text-[var(--text-primary)]">
-                      {formatCurrency(rep.earned)}
+                      {formatCurrency(rep.ytdEarnings)}
                     </td>
                     <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.closeRate}%</td>
                     <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.avgGP}%</td>
@@ -112,7 +112,7 @@ export default function TeamPerformance() {
                     </td>
                     <td className="px-6 py-4 text-right text-sm text-[var(--text-secondary)]">{rep.quotaPercent}%</td>
                     <td className="px-6 py-4 text-center">
-                      <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${getStatusColor(rep.status)}`}>
+                      <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${getStatusColor(rep.status)}`}>
                         {getStatusLabel(rep.status)}
                       </span>
                     </td>
@@ -129,13 +129,13 @@ export default function TeamPerformance() {
                       <td colSpan={9} className="px-6 py-4">
                         <div className="grid gap-4 md:grid-cols-3">
                           <div>
-                            <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase">Tier</p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Tier</p>
                             <p className="mt-1 text-sm font-semibold text-[var(--text-primary)]">
                               {rep.tier.charAt(0).toUpperCase() + rep.tier.slice(1)}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase">Quota Progress</p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Quota Progress</p>
                             <div className="mt-2 h-2 w-full rounded-full bg-[var(--border-color)]">
                               <div
                                 className={`h-full rounded-full ${
@@ -150,14 +150,14 @@ export default function TeamPerformance() {
                             </div>
                           </div>
                           <div>
-                            <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase">Email</p>
+                            <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Email</p>
                             <p className="mt-1 text-sm text-[var(--text-primary)]">{rep.email}</p>
                           </div>
                         </div>
                       </td>
                     </tr>
                   )}
-                </div>
+                </React.Fragment>
               ))}
             </tbody>
           </table>

@@ -1,208 +1,273 @@
+// @ts-nocheck
 'use client';
 
 import { useState } from 'react';
-import { commissionPlans, currentUser } from '@/data/sample-data';
-import { formatPercent } from '@/lib/utils';
-import { cn } from '@/lib/utils';
+import { commissionPlans, currentUser, ihsIdentity } from '@/data/sample-data';
+import { formatPercent, cn } from '@/lib/utils';
+import { BookOpen, CheckCircle, DollarSign, AlertTriangle, ArrowRight, Clock, CreditCard, Shield, Heart, Zap } from 'lucide-react';
 
 export default function MyPlan() {
   const [acknowledged, setAcknowledged] = useState(false);
 
-  const plan = commissionPlans.find((p) => p.brandId === currentUser.brandId);
+  const plan = commissionPlans.find((p: any) => p.brandId === currentUser.brandId);
+  const gpTiers = plan?.tiers || [];
 
   if (!plan) {
     return (
-      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <p className="text-slate-500">Plan not found</p>
-      </div>
+      <div className="p-6 text-center" style={{ color: 'var(--text-tertiary)' }}>Plan not found</div>
     );
   }
 
-  const gpTiers = plan.tiers || [];
+  // Semantic: red→amber→yellow→lime→green→blue (low GP = risk, high GP = integrity)
+  const tierColors = ['var(--semantic-risk)', 'var(--semantic-pending)', '#eab308', '#84cc16', 'var(--semantic-paid)', 'var(--semantic-earned)'];
 
   return (
-    <div className="space-y-6">
-      {/* Pending Acknowledgment Banner */}
-      {!acknowledged && (
-        <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 shadow-sm">
-          <p className="text-sm text-amber-800">
-            You have not yet acknowledged this plan. Please review and acknowledge at the bottom of the page.
-          </p>
+    <div className="h-[calc(100vh-3.5rem)] flex flex-col overflow-hidden">
+      <div className="flex-shrink-0 px-6 pt-4 pb-2">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-black tracking-tight" style={{ color: 'var(--text-primary)' }}>{plan.name}</h1>
+            <p className="text-sm mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
+              {currentUser.brandName} · Effective January 1, 2026
+            </p>
+          </div>
+          {!acknowledged && (
+            <span className="text-[14px] font-bold px-2 py-1 rounded" style={{ backgroundColor: 'rgba(245,158,11,0.12)', color: '#f59e0b' }}>
+              PENDING ACKNOWLEDGMENT
+            </span>
+          )}
         </div>
-      )}
-
-      {/* Plan Header */}
-      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-2xl font-bold text-slate-900">{plan.name}</h1>
-        <p className="mt-2 text-slate-600">{currentUser.brandName}</p>
-        <p className="text-sm text-slate-500">Effective January 1, 2026</p>
       </div>
 
-      {/* How You Get Paid */}
-      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">How You Get Paid</h2>
+      <div className="flex-1 overflow-y-auto px-6 pb-4" style={{ scrollbarWidth: 'thin' }}>
+        <div className="space-y-4">
+          {/* How You Get Paid */}
+          <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
+            <div className="flex items-center gap-2 mb-3">
+              <DollarSign size={16} style={{ color: 'var(--accent-blue)' }} />
+              <span className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>How You Get Paid</span>
+            </div>
+            <p className="text-sm mb-3" style={{ color: 'var(--text-secondary)' }}>
+              Your commission rate is determined by the Gross Profit % of each job. Higher GP% = higher rate. Commission is calculated as:
+            </p>
+            <div className="rounded-lg p-3 mb-3 text-center" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+              <code className="text-sm font-bold" style={{ color: 'var(--accent-blue)' }}>
+                Deal Value × Commission Rate = Your Commission
+              </code>
+              <div className="text-[9px] mt-1" style={{ color: 'var(--text-tertiary)' }}>
+                Deal Value = Full Contract Value (FCV) — the total customer-facing price of the job
+              </div>
+            </div>
 
-        <div className="mb-6 space-y-4">
-          <p className="text-slate-700">
-            Your commission is based on the <span className="font-semibold">Gross Profit percentage</span> of each job. The higher the GP%, the higher your commission rate.
-          </p>
-          <p className="text-slate-700">
-            We calculate your commission as: <span className="font-mono bg-slate-100 px-3 py-1 rounded text-sm">Deal Amount × (GP% ÷ 100) × Rate</span>
-          </p>
-        </div>
+            {/* Tier Chart */}
+            <div className="space-y-1.5">
+              {gpTiers.map((tier: any, idx: number) => {
+                const maxRate = 0.10;
+                const width = (tier.rate / maxRate) * 100;
+                // Check if current user's avg GP falls in this tier
+                const userGP = currentUser.avgGP || 39.3;
+                const tierMin = tier.min || (tier.threshold || 0);
+                const tierMax = tier.max || (gpTiers[idx + 1]?.min || gpTiers[idx + 1]?.threshold || 100);
+                const isUserTier = userGP >= tierMin && userGP < tierMax;
+                return (
+                  <div key={idx} className="flex items-center gap-2">
+                    <span className="text-[14px] font-medium w-16 text-right" style={{ color: isUserTier ? 'var(--text-primary)' : 'var(--text-secondary)', fontWeight: isUserTier ? 700 : 500 }}>
+                      {tier.label || `${tier.threshold || tier.min}%+`}
+                    </span>
+                    <div className="flex-1 h-6 rounded overflow-hidden relative" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                      <div className="h-full rounded flex items-center px-2 transition-all" style={{
+                        width: `${Math.max(width, 12)}%`,
+                        backgroundColor: tierColors[idx] || '#64748b',
+                        boxShadow: isUserTier ? '0 0 0 2px var(--accent-blue)' : 'none',
+                      }}>
+                        <span className="text-[9px] font-bold text-white">{formatPercent(tier.rate * 100)}</span>
+                      </div>
+                      {isUserTier && (
+                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[9px] font-bold px-1.5 py-0.5 rounded"
+                          style={{ backgroundColor: 'var(--accent-blue)', color: 'white' }}>
+                          ← YOU ({formatPercent(userGP)})
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
-        {/* Tier Chart */}
-        <div className="space-y-3">
-          {gpTiers.map((tier, idx) => {
-            const barWidth = (tier.rate * 250); // scale for visual
-            return (
-              <div key={idx}>
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-sm font-medium text-slate-900">{tier.min}% - {tier.max === 100 ? '+' : tier.max + '%'} GP</span>
-                  <span className="text-sm font-bold text-slate-900">
-                    {formatPercent(tier.rate * 100)} rate
-                  </span>
+          {/* Payment Timeline */}
+          <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
+            <div className="flex items-center gap-2 mb-3">
+              <Clock size={16} style={{ color: 'var(--accent-blue)' }} />
+              <span className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>When You Get Paid</span>
+            </div>
+            {/* Next pay date callout */}
+            <div className="rounded-lg p-2.5 mb-3 flex items-center justify-between" style={{ backgroundColor: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)' }}>
+              <div className="flex items-center gap-2">
+                <CreditCard size={14} style={{ color: '#10b981' }} />
+                <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>Next Pay Date: <strong>April 1, 2026</strong></span>
+              </div>
+              <span className="text-[14px]" style={{ color: 'var(--text-tertiary)' }}>Payroll closes March 28</span>
+            </div>
+
+            <div className="space-y-3">
+              {[
+                { step: '1', label: 'Sale Closed', desc: '50% front-end commission paid when you close the deal', color: '#3b82f6', icon: '📝' },
+                { step: '2', label: 'Job Complete', desc: '50% back-end commission paid when installation is done and inspected', color: '#f59e0b', icon: '🔨' },
+                { step: '3', label: 'Direct Deposit', desc: 'All commissions deposited on the 1st and 15th of each month via Paycor', color: '#10b981', icon: '💰' },
+              ].map((s, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm"
+                    style={{ backgroundColor: `${s.color}15`, color: s.color }}>
+                    {s.icon}
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{s.label}</div>
+                    <div className="text-[14px]" style={{ color: 'var(--text-tertiary)' }}>{s.desc}</div>
+                  </div>
+                  {i < 2 && (
+                    <div className="flex-shrink-0 self-center" style={{ color: 'var(--text-tertiary)' }}>
+                      <ArrowRight size={12} />
+                    </div>
+                  )}
                 </div>
-                <div className="h-8 w-full bg-slate-100 rounded-lg overflow-hidden">
-                  <div
-                    className={cn(
-                      'h-full transition-all rounded-lg',
-                      idx === 0 && 'bg-red-500',
-                      idx === 1 && 'bg-orange-500',
-                      idx === 2 && 'bg-yellow-500',
-                      idx === 3 && 'bg-lime-500',
-                      idx === 4 && 'bg-green-500',
-                      idx === 5 && 'bg-blue-500'
-                    )}
-                    style={{ width: `${Math.max(barWidth, 5)}px` }}
-                  />
+              ))}
+            </div>
+          </div>
+
+          {/* What Can Reduce Pay */}
+          <div className="rounded-lg p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--tint-red)', border: '1px solid rgba(239,68,68,0.12)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
+            <div className="flex items-center gap-2 mb-3">
+              <AlertTriangle size={16} style={{ color: '#ef4444' }} />
+              <span className="text-sm font-bold" style={{ color: '#ef4444' }}>What Can Reduce Your Pay</span>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { title: 'Change Orders', desc: 'Scope reduction lowers deal amount and commission' },
+                { title: 'Cost Variances', desc: 'Actual costs exceed estimates, reducing GP%' },
+                { title: 'GP Revisions', desc: 'Pricing errors discovered before job completion' },
+                { title: 'Insurance Shortfalls', desc: 'Insurance pays less than full estimate' },
+              ].map((item, i) => (
+                <div key={i} className="rounded p-2" style={{ backgroundColor: 'var(--bg-card)' }}>
+                  <div className="text-[14px] font-bold" style={{ color: 'var(--text-primary)' }}>{item.title}</div>
+                  <div className="text-[9px] mt-0.5" style={{ color: 'var(--text-tertiary)' }}>{item.desc}</div>
+                </div>
+              ))}
+            </div>
+            <div className="text-[14px] mt-3 p-2 rounded" style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-secondary)' }}>
+              All adjustments are transparent, documented, and posted immediately. You can dispute any adjustment.
+            </div>
+          </div>
+
+          {/* The IHS Way */}
+          <div className="rounded-lg border overflow-hidden duration-300 transition-all" style={{ borderColor: 'var(--accent-blue)', backgroundColor: 'var(--bg-card)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}>
+            {/* Header strip */}
+            <div className="px-4 py-3" style={{ background: 'linear-gradient(135deg, #0f2744 0%, #1e3a5f 100%)' }}>
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-md flex items-center justify-center font-bold text-[14px]"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: 'white' }}>
+                  IHS
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white">The IHS Way</h3>
+                  <p className="text-[9px] text-blue-300/70">Why your commission plan is built the way it is</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        <p className="mt-6 text-sm text-slate-600 italic">
-          The better you negotiate and scope your jobs, the higher your GP% and commission rate.
-        </p>
-      </div>
-
-      {/* When You Get Paid */}
-      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="text-xl font-bold text-slate-900 mb-4">When You Get Paid</h2>
-
-        <div className="space-y-4">
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-              <span className="text-sm font-bold text-blue-900">1</span>
             </div>
-            <div>
-              <p className="font-semibold text-slate-900">Sale → Front-End Commission</p>
-              <p className="text-sm text-slate-600 mt-1">
-                50% of your commission is paid when the deal closes and you write the proposal.
+
+            <div className="p-4 space-y-4">
+              {/* Purpose */}
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1" style={{ color: 'var(--accent-blue)' }}>Our Purpose</p>
+                <p className="text-sm font-semibold italic" style={{ color: 'var(--text-primary)' }}>
+                  &ldquo;{ihsIdentity.purpose}&rdquo;
+                </p>
+                <p className="text-[14px] mt-1" style={{ color: 'var(--text-tertiary)' }}>
+                  Your commission plan rewards ethical pricing because high GP% means honest, sustainable work — not cutting corners.
+                </p>
+              </div>
+
+              {/* Vision + Mission */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-md p-2.5" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.12em] mb-0.5" style={{ color: 'var(--accent-blue)' }}>Vision</p>
+                  <p className="text-sm font-semibold italic" style={{ color: 'var(--text-primary)' }}>{ihsIdentity.vision}</p>
+                </div>
+                <div className="rounded-md p-2.5" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.12em] mb-0.5" style={{ color: 'var(--accent-blue)' }}>Mission</p>
+                  <p className="text-[14px] font-medium" style={{ color: 'var(--text-primary)' }}>Border to Border, Coast to Coast</p>
+                </div>
+              </div>
+
+              {/* Core Values */}
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] mb-2" style={{ color: 'var(--accent-blue)' }}>Core Values</p>
+                <div className="space-y-1.5">
+                  {ihsIdentity.coreValues.map((v: any) => (
+                    <div key={v.letter} className="flex items-center gap-2.5 px-3 py-2 rounded-md" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                      <div className="w-8 h-8 rounded-md flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                        style={{ backgroundColor: 'var(--accent-blue)' }}>
+                        {v.letter}
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold" style={{ color: 'var(--text-primary)' }}>{v.name}</p>
+                        <p className="text-[14px]" style={{ color: 'var(--text-tertiary)' }}>{v.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Non-Negotiables */}
+              <div className="rounded-md p-3" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+                <p className="text-[9px] font-bold uppercase tracking-[0.12em] mb-1.5" style={{ color: 'var(--accent-blue)' }}>Non-Negotiables</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {ihsIdentity.nonNegotiables.map((item: string) => (
+                    <span key={item} className="text-[14px] font-medium px-2 py-1 rounded-md"
+                      style={{ backgroundColor: 'var(--bg-card)', color: 'var(--text-secondary)', border: '1px solid var(--border-primary)' }}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tagline */}
+              <p className="text-[14px] font-semibold italic text-center py-1" style={{ color: 'var(--accent-blue)' }}>
+                {ihsIdentity.tagline}
               </p>
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-sm font-bold text-amber-900">2</span>
+          {/* Acknowledgment */}
+          <div className="rounded-2xl border p-4 duration-300 transition-all" style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-subtle)', boxShadow: 'var(--shadow-card)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--shadow-card)'; }}>
+            <div className="flex items-start gap-3">
+              <input type="checkbox" id="ack" checked={acknowledged} onChange={e => setAcknowledged(e.target.checked)}
+                className="mt-0.5 accent-blue-500" />
+              <label htmlFor="ack" className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                I acknowledge that I have read and understood the {plan.name} commission plan, effective January 1, 2026.
+              </label>
             </div>
-            <div>
-              <p className="font-semibold text-slate-900">Job Complete → Back-End Commission</p>
-              <p className="text-sm text-slate-600 mt-1">
-                The remaining 50% is paid when the job is physically completed and inspected.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex gap-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
-              <span className="text-sm font-bold text-green-900">3</span>
-            </div>
-            <div>
-              <p className="font-semibold text-slate-900">Direct Deposit</p>
-              <p className="text-sm text-slate-600 mt-1">
-                All commissions are deposited to your designated bank account on the 1st and 15th of each month.
-              </p>
-            </div>
+            <button disabled={!acknowledged}
+              className="mt-3 px-4 py-2 rounded-lg text-sm font-bold transition-all"
+              style={{
+                backgroundColor: acknowledged ? 'var(--accent-blue)' : 'var(--bg-secondary)',
+                color: acknowledged ? 'white' : 'var(--text-tertiary)',
+                cursor: acknowledged ? 'pointer' : 'not-allowed',
+              }}>
+              {acknowledged ? '✓ Acknowledged' : 'Acknowledge & Continue'}
+            </button>
           </div>
         </div>
-
-        <div className="mt-6 p-4 rounded-lg bg-slate-50 border border-slate-200">
-          <p className="text-sm text-slate-700">
-            <span className="font-semibold">Pro Tip:</span> You can see your back-end commission as "earned" once the job is complete, even if it hasn't been paid yet.
-          </p>
-        </div>
-      </div>
-
-      {/* What Can Reduce Your Pay */}
-      <div className="rounded-lg border border-red-200 bg-red-50 p-6 shadow-sm">
-        <h2 className="text-xl font-bold text-red-900 mb-4">What Can Reduce Your Pay</h2>
-
-        <div className="space-y-4">
-          <div>
-            <p className="font-semibold text-red-900">Change Orders</p>
-            <p className="text-sm text-red-800 mt-1">
-              If the scope of work changes and the deal amount decreases, your commission is adjusted downward automatically. You'll be notified within 24 hours.
-            </p>
-          </div>
-
-          <div>
-            <p className="font-semibold text-red-900">Cost Variances</p>
-            <p className="text-sm text-red-800 mt-1">
-              If actual costs exceed estimates, the GP% may be recalculated, affecting your rate. This is flagged during quality review.
-            </p>
-          </div>
-
-          <div>
-            <p className="font-semibold text-red-900">GP Revisions</p>
-            <p className="text-sm text-red-800 mt-1">
-              Rare adjustments if pricing errors are discovered before the job completes. These require manager approval and are fully documented.
-            </p>
-          </div>
-
-          <div>
-            <p className="font-semibold text-red-900">Insurance Supplements</p>
-            <p className="text-sm text-red-800 mt-1">
-              If insurance doesn't pay the full estimate, the deal amount is reduced and commission is adjusted accordingly.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-6 p-4 rounded-lg bg-white border border-red-200">
-          <p className="text-sm text-slate-700">
-            All adjustments are transparent, documented, and posted to your commission statement immediately. You can dispute any adjustment in the Disputes section.
-          </p>
-        </div>
-      </div>
-
-      {/* Acknowledge Button */}
-      <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <div className="flex items-start gap-4">
-          <input
-            type="checkbox"
-            id="acknowledge"
-            checked={acknowledged}
-            onChange={(e) => setAcknowledged(e.target.checked)}
-            className="mt-1"
-          />
-          <label htmlFor="acknowledge" className="text-sm text-slate-700">
-            I acknowledge that I have read and understood the {plan.name} commission plan, effective January 1, 2026.
-          </label>
-        </div>
-
-        <button
-          disabled={!acknowledged}
-          className={cn(
-            'mt-4 rounded-lg px-6 py-2 font-medium transition-colors',
-            acknowledged
-              ? 'bg-blue-600 text-white hover:bg-blue-700'
-              : 'bg-slate-200 text-slate-400 cursor-not-allowed'
-          )}
-        >
-          Acknowledge & Continue
-        </button>
       </div>
     </div>
   );

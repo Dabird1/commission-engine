@@ -189,7 +189,7 @@ export default function CostAnalysis() {
                 ></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium text-[var(--text-primary)]">{item.name}</p>
-                  <p className="text-xs text-[var(--text-secondary)]">{formatCurrency(item.value)}</p>
+                  <p className="text-sm text-[var(--text-secondary)]">{formatCurrency(item.value)}</p>
                 </div>
                 <p className="text-sm font-semibold text-[var(--text-primary)]">{item.percentage}%</p>
               </div>
@@ -242,7 +242,7 @@ export default function CostAnalysis() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {/* Current Cost */}
             <div className="rounded-lg bg-[var(--bg-secondary)] p-4">
-              <p className="text-xs font-semibold text-[var(--text-secondary)] uppercase">Current Annual Cost</p>
+              <p className="text-sm font-semibold text-[var(--text-secondary)] uppercase">Current Annual Cost</p>
               <p className="mt-2 text-2xl font-bold text-[var(--text-primary)]">
                 {formatCurrency(currentTotalCost)}
               </p>
@@ -250,7 +250,7 @@ export default function CostAnalysis() {
 
             {/* Projected Cost */}
             <div className="rounded-lg bg-blue-50 p-4 dark:bg-blue-950">
-              <p className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">
+              <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase">
                 Projected Cost (+{newHires})
               </p>
               <p className="mt-2 text-2xl font-bold text-blue-700 dark:text-blue-300">
@@ -260,11 +260,11 @@ export default function CostAnalysis() {
 
             {/* Cost Increase */}
             <div className="rounded-lg bg-red-50 p-4 dark:bg-red-950">
-              <p className="text-xs font-semibold text-red-600 dark:text-red-400 uppercase">Cost Increase</p>
+              <p className="text-sm font-semibold text-red-600 dark:text-red-400 uppercase">Cost Increase</p>
               <p className="mt-2 text-2xl font-bold text-red-700 dark:text-red-300">
                 +{formatCurrency(costIncrease)}
               </p>
-              <p className="mt-1 text-xs text-red-600 dark:text-red-400">
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
                 ({((costIncrease / currentTotalCost) * 100).toFixed(1)}% increase)
               </p>
             </div>
